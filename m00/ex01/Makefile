@@ -1,7 +1,7 @@
-NAME = megaphone
+NAME = awesomebook
 
 
-SRC = megaphone.cpp
+SRC = main.cpp Contact.cpp
 
 FLAGS = -Wall -Wextra -Werror -std=c++11
 OBJ = $(SRC:.c=.o)
