@@ -16,6 +16,14 @@ void	Contact::setDefault(void){
 	this->secret = "secret";
 }
 
+void	Contact::printAll(void)
+{
+	std::cout << this->firstName << std::endl;
+	std::cout << this->lastName << std::endl;
+	std::cout << this->nickName << std::endl;
+	std::cout << this->phoneNumber << std::endl;
+	std::cout << this->secret << std::endl;
+}
 void	Contact::copyAll(Contact& contact)
 {
 	this->firstName = contact.getFirstName();
@@ -28,7 +36,8 @@ void	Contact::copyAll(Contact& contact)
 int		Contact::addContactField(std::string msg, std::string& inputLine,  Contact& contact, MemberFunction f)
 {
 	std::cout << msg;
-	std::getline(std::cin, inputLine);
+	if (!std::getline(std::cin, inputLine))
+		return (EXIT_SUCCESS);
 	if (inputLine.length() == 0)
 	{
 		std::cout << "Entry can not be empty. Please enter again." << std::endl;
@@ -47,6 +56,14 @@ void	Contact::inputAll(void){
 		;
 	while (this->addContactField("Enter last name:", str, contact, &Contact::setLastName))
 		;
+	/*
+	while (this->addContactField("Enter nickname:", str, contact, &Contact::setNickName))
+		;
+	while (this->addContactField("Enter phone number:", str, contact, &Contact::setPhoneNumber))
+		;
+	while (this->addContactField("Enter the darkest secret:", str, contact, &Contact::setSecret))
+		;
+	*/
 	this->copyAll(contact);
 }
 

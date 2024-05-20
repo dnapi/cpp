@@ -11,6 +11,7 @@ class Contact{
 		Contact(void);
 		void	setDefault(void);
 		void	inputAll(void);
+		void	printAll();
 		void	copyAll(Contact& contact);
 
 		std::string	getFirstName(void);
