@@ -37,6 +37,13 @@ int		Contact::addContactField(std::string msg, std::string& inputLine,  Contact&
 {
 	std::cout << msg;
 	if (!std::getline(std::cin, inputLine))
+	{
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		return (EXIT_FAILURE);
+		//return (EXIT_SUCCESS);
+	}
+	if (std::cin.eof())
 		return (EXIT_SUCCESS);
 	if (inputLine.length() == 0)
 	{
@@ -46,6 +53,18 @@ int		Contact::addContactField(std::string msg, std::string& inputLine,  Contact&
 	(contact.*f)(inputLine);
 	inputLine = "";
 	return (EXIT_SUCCESS);
+}
+
+void  Contact::printEntry(MemberFunVoid f){
+	std::string	str;
+	
+	str = (this->*f)();
+	if (str.length() > 10)
+	{
+		str.resize(9);
+		str +=".";
+	}
+	std::cout << std::setw(10) << str << "|";
 }
 
 void	Contact::inputAll(void){

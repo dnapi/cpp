@@ -2,17 +2,20 @@
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
 
-#include <iostream>
+# include <iostream>
+# include <iomanip>
 
 
 class Contact{
 
 	public :
 		Contact(void);
+		typedef std::string	(Contact::*MemberFunVoid)(void);
 		void	setDefault(void);
 		void	inputAll(void);
 		void	printAll();
 		void	copyAll(Contact& contact);
+		void	printEntry(MemberFunVoid f);
 
 		std::string	getFirstName(void);
 		std::string	getLastName(void);

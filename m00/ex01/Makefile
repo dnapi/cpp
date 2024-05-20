@@ -4,7 +4,7 @@ NAME = awesomebook
 SRC = main.cpp Contact.cpp PhoneBook.cpp
 
 FLAGS = -Wall -Wextra -Werror -std=c++11
-OBJ = $(SRC:.c=.o)
+OBJ = $(SRC:.cpp=.o)
 CC = c++
 
 all: $(NAME)
