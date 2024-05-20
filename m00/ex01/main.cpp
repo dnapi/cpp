@@ -1,18 +1,21 @@
-#include "Contact.hpp"
+#include "PhoneBook.hpp"
+
 
 int	main(void)
 {
-	Contact c;
+	PhoneBook pb;
 	std::string str;
-	for (int i = 0; i < 3; i++)
+	while (1)
 	{
-	    std::cout << "Please enter a line of text: ";
+	    std::cout << "Please enter a command (ADD, SEARCH or EXIT)" << std::endl;
     	std::getline(std::cin, str);
 	    std::cout << "You entered: " << str << std::endl;
+		if (str == "ADD")
+			pb.addEntry();
+		if (str == "SEARCH")
+			pb.searchEntry();
+		if (str == "EXIT")
+			break ;
 	}
-//	instance.foo = 42;
-//	std::cout << "foo = " << instance.foo << std::endl;
-//	instance.boo();
-
 	return (0);
 }
