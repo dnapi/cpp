@@ -32,25 +32,12 @@ void	PhoneBook::printAll(void)
 	while (i < this->amount)
 	{
 		position = (this->head + i) % MAX_NUM_CONTACTS;
-		//std::cout << " --- Index i=" << i << "Position =" << position << std::endl;
 		std::cout << "|" << std::setw(10) << i << "|";
-	/*
-		str = this->contacts[position].getFirstName();
-		if (str.length() > 10)
-		{
-			str.resize(9);
-			str +=".";
-		}
-		std::cout << std::setw(10) << str << "|";
-	*/
 		this->contacts[position].printEntry(&Contact::getFirstName);
 		this->contacts[position].printEntry(&Contact::getLastName);
 		this->contacts[position].printEntry(&Contact::getNickName);
-		//std::cout << std::setw(10) << this->contacts[position].getLastName() << "|";
-		//std::cout << std::setw(10) << this->contacts[position].getNickName() << "|" << std::endl;
 		std::cout << std::endl;
 		this->printLineSeparator();
-		//this->contacts[position].printAll();
 		i++;
 	}
 	while (1)
