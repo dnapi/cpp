@@ -8,13 +8,15 @@ int	main(void)
 
 	while (1)
 	{
+		if (std::cin.eof()){
+			std::cout << std::endl << "You have entered EOF. Program is terminated." << std::endl;
+			break ;
+		}
 	    std::cout << "Please enter a command (ADD, SEARCH or EXIT)" << std::endl;
     	if (!std::getline(std::cin, str))
 		{
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			//std::cout << "You have entered EOF. Program is terminated." << std::endl;
-			//break ;
 			continue;
 		}
 	    //std::cout << "You entered: " << str << std::endl;
@@ -25,7 +27,7 @@ int	main(void)
 		else if (str == "EXIT")
 			break ;
 		else
-			std::cout << "Command: " << str << "is not supported." << std::endl;
+			std::cout << "Command: " << str << " is not supported." << std::endl;
 	}
 	return (0);
 }

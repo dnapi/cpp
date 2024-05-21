@@ -1,10 +1,38 @@
 #include <iostream>
+#include <limits> // for std::numeric_limits
 
-int	main(void)
-{
-	char	buff[512];
+int main() {
+    int value;
 
-	std::cout << "Hellow World" <<std::endl;
-	std::cin >> buff;
-	std::cout << "buf = >>" << buff << "<<" <<std::endl;
+    while (true) {
+        std::cout << "Enter an integer: ";
+
+        // Read input
+        std::cin >> value;
+
+        // Check for EOF
+        if (std::cin.eof()) {
+            std::cout << "EOF encountered. Recovering the stream." << std::endl;
+            // Clear the EOF state
+            std::cin.clear(std::ios::eofbit);
+            // Ignore remaining input
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue;
+        }
+
+        // Check for other errors
+        if (std::cin.fail()) {
+            std::cout << "Input error. Clearing and trying again." << std::endl;
+            // Clear the error state
+            std::cin.clear();
+            // Ignore remaining input
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue;
+        }
+
+        // If input is successful
+        std::cout << "You entered: " << value << std::endl;
+    }
+
+    return 0;
 }

@@ -6,7 +6,7 @@
 # include <iomanip>
 # include "Contact.hpp"
 
-# define MAX_NUM_CONTACTS 3
+# define MAX_NUM_CONTACTS 8
 
 class PhoneBook{
 

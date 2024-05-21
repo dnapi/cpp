@@ -35,16 +35,13 @@ void	Contact::copyAll(Contact& contact)
 
 int		Contact::addContactField(std::string msg, std::string& inputLine,  Contact& contact, MemberFunction f)
 {
-	std::cout << msg;
-	if (!std::getline(std::cin, inputLine))
-	{
-		std::cin.clear();
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		return (EXIT_FAILURE);
-		//return (EXIT_SUCCESS);
-	}
 	if (std::cin.eof())
 		return (EXIT_SUCCESS);
+	std::cout << msg;
+	if (!std::getline(std::cin, inputLine) || std::cin.eof())
+	{
+		return (EXIT_SUCCESS);
+	}
 	if (inputLine.length() == 0)
 	{
 		std::cout << "Entry can not be empty. Please enter again." << std::endl;
@@ -75,14 +72,12 @@ void	Contact::inputAll(void){
 		;
 	while (this->addContactField("Enter last name:", str, contact, &Contact::setLastName))
 		;
-	/*
 	while (this->addContactField("Enter nickname:", str, contact, &Contact::setNickName))
 		;
 	while (this->addContactField("Enter phone number:", str, contact, &Contact::setPhoneNumber))
 		;
 	while (this->addContactField("Enter the darkest secret:", str, contact, &Contact::setSecret))
 		;
-	*/
 	this->copyAll(contact);
 }
 

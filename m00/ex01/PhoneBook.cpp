@@ -9,6 +9,7 @@ void	PhoneBook::printLineSeparator(void)
 {
 	std::cout << std::setfill('-') << std::setw(10 * 4 + 5) << "" << std::setfill(' ') << std::endl;
 }
+
 void	PhoneBook::printAll(void)
 {
 	int i = 0;
@@ -24,10 +25,12 @@ void	PhoneBook::printAll(void)
 	std::cout << std::endl;
 	this->printLineSeparator();
 	//std::cout << "Index, first name, last name and nickname" << std::endl;
-	std::cout << std::setw(10) << "Index" << "|";
-	std::cout << std::setw(10) << "First name" << "|";
-	std::cout << std::setw(10) << "Last name" << "|";
-	std::cout << std::setw(10) << "Nickname" << "|" << std::endl;
+	std::cout << "|"
+		<< std::setw(10) << "Index" << "|"
+		<< std::setw(10) << "First name" << "|"
+		<< std::setw(10) << "Last name" << "|"
+		<< std::setw(10) << "Nickname" << "|"
+		<< std::endl;
 	this->printLineSeparator();
 	while (i < this->amount)
 	{
@@ -42,16 +45,15 @@ void	PhoneBook::printAll(void)
 	}
 	while (1)
 	{
+		if (std::cin.eof())
+			break ;
 		std::cout << "Please, enter an index or -1 for exit: ";
 		std::cin >> i;
-		/*
 		if (std::cin.eof())
-		{
-			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			break;
+		{	
+			//std::cout << std::endl;
+			break ;
 		}
-		*/
 		if(std::cin.fail()){
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -73,11 +75,10 @@ void	PhoneBook::printAll(void)
 			this->contacts[i].printAll();
 		}
 	}
-	//std::cout << " ----------- " << std::endl;
 }
 
 void	PhoneBook::addEntry(void){
-	std::cout << "Starting addjing entry" << std::endl;
+	std::cout << "Adding new contact" << std::endl;
 
 	int i = 0;
 	Contact contact;
