@@ -1,0 +1,15 @@
+#pragma once
+
+#include <fstream>
+#include <iostream>
+#include <string>
+
+class Replacer{
+	public :
+		Replacer();
+		std::string	readAllFromFile(std::ifstream &filestream);
+	private :
+		std::string	fullString;
+		std::string	from;
+		str::string	to;
+};
