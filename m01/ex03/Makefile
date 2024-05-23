@@ -1,8 +1,8 @@
 NAME = a.out
 
-SRC = main.cpp
+SRC = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 
-FLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Wextra -Werror #-std=c++11
 OBJ = $(SRC:.cpp=.o)
 CC = c++
 
