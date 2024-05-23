@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   megaphone.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apimikov <apimikov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 10:34:47 by apimikov          #+#    #+#             */
-/*   Updated: 2024/05/17 12:19:18 by apimikov         ###   ########.fr       */
+/*   Updated: 2024/05/23 09:48:44 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ std::string toUpperCase(const std::string &str) {
 
 int main(int argc, char **argv) {
 	int	i;
-	int	shift;
 	std::string uppercased;
 
 
@@ -34,15 +33,9 @@ int main(int argc, char **argv) {
 		return (0);
 	}
 	i = 1;
-	shift = 0;
+//	shift = 0;
 	while (++i <= argc)
-	{
-		shift = argv[i - 1][0] == ' ';
-		uppercased = toUpperCase(argv[i - 1] + shift);
-    	std::cout << uppercased;
-		if (uppercased.back() != ' ')
-			std::cout << " ";
-	}
+		std::cout << toUpperCase(argv[i - 1]);
     std::cout << std::endl;
     return (0);
 }
