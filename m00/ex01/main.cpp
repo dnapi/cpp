@@ -1,3 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/23 09:56:40 by apimikov          #+#    #+#             */
+/*   Updated: 2024/05/23 10:03:30 by apimikov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+//#include <limits>
 #include "PhoneBook.hpp"
 
 
@@ -19,7 +32,6 @@ int	main(void)
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			continue;
 		}
-	    //std::cout << "You entered: " << str << std::endl;
 		if (str == "ADD")
 			pb.addEntry();
 		else if (str == "SEARCH")

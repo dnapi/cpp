@@ -6,7 +6,7 @@
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 10:34:47 by apimikov          #+#    #+#             */
-/*   Updated: 2024/05/23 09:48:44 by apimikov         ###   ########.fr       */
+/*   Updated: 2024/05/23 09:55:01 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int main(int argc, char **argv) {
 		return (0);
 	}
 	i = 1;
-//	shift = 0;
 	while (++i <= argc)
 		std::cout << toUpperCase(argv[i - 1]);
     std::cout << std::endl;

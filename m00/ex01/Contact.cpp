@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/23 09:56:53 by apimikov          #+#    #+#             */
+/*   Updated: 2024/05/23 09:57:43 by apimikov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Contact.hpp"
 
 #define	EXIT_FAILURE 1
@@ -8,6 +20,7 @@ Contact::Contact()
 	return ;
 }
 
+/*
 void	Contact::setDefault(void){
 	this->firstName = "first";
 	this->lastName = "last";
@@ -15,6 +28,7 @@ void	Contact::setDefault(void){
 	this->phoneNumber = "777";
 	this->secret = "secret";
 }
+*/
 
 void	Contact::printAll(void)
 {
