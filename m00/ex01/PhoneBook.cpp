@@ -1,3 +1,4 @@
+#include <climits>
 #include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook(void){
@@ -56,7 +57,8 @@ void	PhoneBook::printAll(void)
 		}
 		if(std::cin.fail()){
 			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			//std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			std::cin.ignore(INT_MAX, '\n');
 			std::cout << "Wrong index format" << std::endl;
 			continue ;
 		}
