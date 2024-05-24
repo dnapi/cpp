@@ -9,6 +9,8 @@ class Harl{
 		~Harl(void);
 		void	printStr(std::string str) const;
 		void	complain(std::string level);
+		void	complainAll(int startLevel);
+		int		levelToInt(std::string level);
 	private :
 //		typedef	void	(Harl::*MemberFunction)(void);
 //		MemberFunction	_functions[5];

@@ -54,3 +54,27 @@ void Harl::complain(std::string level)
 	std::cout << "[ " << _LevelList[i] << " ]" << std::endl;
 	(this->*_functions[i])();
 }
+
+void Harl::complainAll(int	startLevel)
+{
+	if (startLevel < 0 || startLevel > 3)
+	{
+		printStr("[ Probably complaining about insignificant problems ]");
+		return ;
+	}
+	int i = startLevel;
+	while (i < 4)
+	{
+		std::cout << "[ " << _LevelList[i] << " ]" << std::endl;
+		(this->*_functions[i])();
+		i++;
+	}
+}
+
+int Harl::levelToInt(std::string level)
+{
+	int i = 0;
+	while (i < 4 && level != _LevelList[i])
+		i++;
+	return (i);
+}
