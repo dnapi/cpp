@@ -25,7 +25,6 @@ void	PhoneBook::printAll(void)
 	}
 	std::cout << std::endl;
 	this->printLineSeparator();
-	//std::cout << "Index, first name, last name and nickname" << std::endl;
 	std::cout << "|"
 		<< std::setw(10) << "Index" << "|"
 		<< std::setw(10) << "First name" << "|"
@@ -74,7 +73,7 @@ void	PhoneBook::printAll(void)
 		}
 		else
 		{
-			this->contacts[i].printAll();
+			this->contacts[(this->head + i) % MAX_NUM_CONTACTS].printAll();
 		}
 	}
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Replacer.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apimikov <apimikov@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/24 15:55:54 by apimikov          #+#    #+#             */
+/*   Updated: 2024/05/24 15:55:56 by apimikov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #pragma once
 
 #include <fstream>
@@ -14,7 +26,7 @@ class Replacer{
 		static	std::string	readAllFromFile(std::ifstream &filestream);
 	private :
 		std::ifstream   & _filestream;
-		std::string	_fullString;
-		std::string	& _toReplace;
-		std::string	& _replaceWith;
+		std::string		_fullString;
+		std::string	 	_toReplace;
+		std::string	 	_replaceWith;
 };

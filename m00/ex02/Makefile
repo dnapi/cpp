@@ -3,7 +3,7 @@ NAME = accounts
 
 SRC = tests.cpp Account.cpp
 
-FLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Wextra -Werror #-std=c++98
 OBJ = $(SRC:.cpp=.o)
 CC = c++
 
