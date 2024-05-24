@@ -3,23 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   megaphone.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: apimikov <apimikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 10:34:47 by apimikov          #+#    #+#             */
-/*   Updated: 2024/05/23 09:55:01 by apimikov         ###   ########.fr       */
+/*   Updated: 2024/05/24 12:29:23 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <cctype>
 
-// Function to convert a string to uppercase
-std::string toUpperCase(const std::string &str) {
+std::string toUpperCase(const std::string &str)
+{
     std::string result = str;
-    for (char &c : result) {
-        c = std::toupper(static_cast<unsigned char>(c));
+    //for (char &c : result) {
+	for (size_t i = 0; i < str.size(); i++)
+	{
+		result[i] = std::toupper(result[i]);
     }
-    return result;
+    return (result);
 }
 
 int main(int argc, char **argv) {

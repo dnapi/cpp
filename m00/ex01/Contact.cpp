@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: apimikov <apimikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 09:56:53 by apimikov          #+#    #+#             */
-/*   Updated: 2024/05/23 09:57:43 by apimikov         ###   ########.fr       */
+/*   Updated: 2024/05/24 12:29:51 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,7 @@
 #define	EXIT_FAILURE 1
 #define EXIT_SUCCESS 0
 
-Contact::Contact()
-{
-	return ;
-}
-
-/*
-void	Contact::setDefault(void){
-	this->firstName = "first";
-	this->lastName = "last";
-	this->nickName = "nick";
-	this->phoneNumber = "777";
-	this->secret = "secret";
-}
-*/
+Contact::Contact(){}
 
 void	Contact::printAll(void)
 {
