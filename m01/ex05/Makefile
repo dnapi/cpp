@@ -2,7 +2,7 @@ NAME = harl
 
 SRC = main.cpp Harl.cpp
 
-FLAGS = -Wall -Wextra -Werror -std=c++11
+FLAGS = -Wall -Wextra -Werror # -std=c++11
 OBJ = $(SRC:.cpp=.o)
 CC = c++
 

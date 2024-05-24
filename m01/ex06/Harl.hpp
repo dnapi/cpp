@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apimikov <apimikov@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/24 16:09:20 by apimikov          #+#    #+#             */
+/*   Updated: 2024/05/24 16:09:21 by apimikov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #pragma once
 
 #include <string>
@@ -12,8 +24,6 @@ class Harl{
 		void	complainAll(int startLevel);
 		int		levelToInt(std::string level);
 	private :
-//		typedef	void	(Harl::*MemberFunction)(void);
-//		MemberFunction	_functions[5];
 		void	(Harl::*_functions[5])(void);
 		std::string _LevelList[5];
 		void	debug(void);
