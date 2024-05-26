@@ -6,14 +6,19 @@ const int Fixed::_fract_bits = 8;
 Fixed::Fixed()
 {
 	std::cout << "Default constructor called\n";
+	_value = 0;
 };
 
-~Fixed::Fixed(){};
+Fixed::~Fixed()
+{
+	_value = 0;
+	std::cout << "Destructor called\n";
+};
 
 Fixed::Fixed(Fixed const &number)
 {
 	std::cout << "Copy constructor called\n";
-	_int = number->getRawBits();
+	_value = number.getRawBits();
 }
 
 void Fixed::setRawBits(int const raw)
@@ -21,14 +26,16 @@ void Fixed::setRawBits(int const raw)
 	_value = raw;
 }
 
-int	Fixed::getRawBits(void)
+int	Fixed::getRawBits(void) const
 {
+	std::cout << "getRawBits member function called\n";
 	return (_value);
 }
 
 Fixed	&Fixed::operator=(const Fixed &number)
 {
+	std::cout << "Copy assignment operator called\n";
 	if (this != &number)
-		_value = number->_value;
+		_value = number.getRawBits();
 	return (*this);
 }

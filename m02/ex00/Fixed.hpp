@@ -7,7 +7,7 @@ class Fixed
 	public:
 		// constructors
 		Fixed();
-		Fixed(Fixed number);
+		Fixed(Fixed const &number);
 
 		//destructors
 		~Fixed();
