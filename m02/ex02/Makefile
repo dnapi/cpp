@@ -2,7 +2,7 @@ NAME = Fixed
 
 SRC = main.cpp Fixed.cpp
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror #-std=c++17
 INC = Fixed.hpp
 OBJ = $(SRC:.cpp=.o)
 CC = c++
@@ -12,8 +12,8 @@ all: $(NAME)
 $(NAME): $(OBJ) $(INC)
 	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
 
-%.o: %.cpp
-	$(CC) $(FLAGS) -c $^ -o $@
+%.o: %.cpp  $(INC)
+	$(CC) $(FLAGS) -c $< -o $@
 
 clean:
 	rm -f ${OBJ}
