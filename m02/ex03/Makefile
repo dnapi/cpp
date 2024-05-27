@@ -1,18 +1,19 @@
-NAME = harlFilter
+NAME = Fixed
 
-SRC = main.cpp Harl.cpp
+SRC = main.cpp Fixed.cpp Point.cpp
 
-FLAGS = -Wall -Wextra -Werror #-std=c++11
+FLAGS = -Wall -Wextra -Werror #-std=c++17
+INC = Fixed.hpp
 OBJ = $(SRC:.cpp=.o)
 CC = c++
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(INC)
 	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
 
-%.o: %.cpp
-	$(CC) $(FLAGS) -c $^ -o $@
+%.o: %.cpp  $(INC)
+	$(CC) $(FLAGS) -c $< -o $@
 
 clean:
 	rm -f ${OBJ}
