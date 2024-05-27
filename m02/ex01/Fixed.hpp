@@ -16,7 +16,6 @@ class Fixed
 
 		//operators
 		Fixed	&operator=(const Fixed &number);
-		std::ostream	&operator<<(std::ostream &os, const Fixed &number);
 
 		//setter
 		void		setRawBits(int const raw);
@@ -33,5 +32,7 @@ class Fixed
 		int			_value;
 		static const int	_fract_bits;
 };
+
+std::ostream	&operator<<(std::ostream &os, const Fixed &number);
 
 #endif

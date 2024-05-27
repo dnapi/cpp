@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 #include "Fixed.hpp"
 
 const int Fixed::_fract_bits = 8;
@@ -21,13 +22,15 @@ Fixed::Fixed(Fixed const &number)
 	_value = number.getRawBits();
 }
 
-Fixed::Fixed(int &number)
+Fixed::Fixed(const int &number)
 {
-	_value = number << fract_bits;
+	std::cout << "Int constructor called\n";
+	_value = number << _fract_bits;
 }
 
-Fixed::Fixed(float &number)
+Fixed::Fixed(const float &number)
 {
+	std::cout << "Float constructor called\n";
 	_value = roundf(number * (1 << _fract_bits));
 }
 
@@ -38,7 +41,7 @@ void Fixed::setRawBits(int const raw)
 
 int	Fixed::getRawBits(void) const
 {
-	std::cout << "getRawBits member function called\n";
+//	std::cout << "getRawBits member function called\n";
 	return (_value);
 }
 
@@ -50,9 +53,10 @@ Fixed	&Fixed::operator=(const Fixed &number)
 	return (*this);
 }
 
-std::ostream &operator<<(std::ostream &os, Fixed &number)
+std::ostream &operator<<(std::ostream &os, const Fixed &number)
 {
-	os << "Printing Fixed point number to be implimented.\n";
+	(void)number;
+	os << number.toFloat();
 	return (os);
 }
 
@@ -63,9 +67,8 @@ float	Fixed::toFloat(void) const
 	return (number);
 }
 
-int	toInt(vois) const
+int	Fixed::toInt(void) const
 {
 	int	number = this->getRawBits() >> _fract_bits;
 	return (number);
-
 }
