@@ -2,6 +2,9 @@
 #ifndef FIXED_HPP
 # define FIXED_HPP
 
+# include <iostream>
+# include <cmath>
+
 class Fixed
 {
 	public:
@@ -16,6 +19,16 @@ class Fixed
 
 		//operators
 		Fixed	&operator=(const Fixed &number);
+		bool	operator<(const Fixed &number);
+		bool	operator>(const Fixed &number);
+		bool	operator<=(const Fixed &number);
+		bool	operator>=(const Fixed &number);
+		bool	operator==(const Fixed &number);
+		bool	operator!=(const Fixed &number);
+		Fixed	operator+(const Fixed &number);
+		Fixed	operator-(const Fixed &number);
+		Fixed	operator*(const Fixed &number);
+		Fixed	operator/(const Fixed &number);
 
 		//setter
 		void		setRawBits(int const raw);
