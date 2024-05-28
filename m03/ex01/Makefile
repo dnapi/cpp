@@ -1,6 +1,6 @@
 NAME = ClapTrap
 
-SRC = main.cpp ClapTrap.cpp
+SRC = main.cpp ClapTrap.cpp ScavTrap.cpp
 
 FLAGS = -Wall -Wextra -Werror #-std=c++17
 INC = ClapTrap.hpp

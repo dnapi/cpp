@@ -2,7 +2,7 @@ NAME = Fixed
 
 SRC = main.cpp Fixed.cpp Point.cpp bsp.cpp
 
-FLAGS = -Wall -Wextra -Werror #-std=c++17
+FLAGS = -Wall -Wextra -Werror -std=c++17
 INC = Fixed.hpp
 OBJ = $(SRC:.cpp=.o)
 CC = c++
