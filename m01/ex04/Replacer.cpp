@@ -6,7 +6,7 @@
 /*   By: apimikov <apimikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 15:55:58 by apimikov          #+#    #+#             */
-/*   Updated: 2024/05/24 15:55:59 by apimikov         ###   ########.fr       */
+/*   Updated: 2024/05/24 16:34:27 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Replacer::Replacer(std::ifstream & filestream,
 	: _filestream(filestream), _toReplace(toReplace), _replaceWith(replaceWith)
 {
 	_fullString = readAllFromFile(_filestream);
-	std::cout << "Replacer is constructed" << std::endl;
+	//std::cout << "Replacer is constructed" << std::endl;
 }
 
 
@@ -41,7 +41,6 @@ void Replacer::findAndReplace(void)
 	pos = 0;
 	while ((pos = _fullString.find(_toReplace, pos)) != std::string::npos)
 	{
-//		std::cout << pos << std::endl;
 		_fullString.erase(pos, _toReplace.size());
 		_fullString.insert(pos,_replaceWith);
 		pos += _toReplace.size();

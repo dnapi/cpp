@@ -1,0 +1,11 @@
+make re
+echo "TEST 0"
+./harlFilter "DEBUG"
+echo "TEST 1"
+./harlFilter "INFO"
+echo "TEST 2"
+./harlFilter "WARNING"
+echo "TEST 3"
+./harlFilter "ERROR"
+echo "TEST 4"
+./harlFilter "ABRA"

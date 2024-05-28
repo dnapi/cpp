@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apimikov <apimikov@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/24 16:34:23 by apimikov          #+#    #+#             */
+/*   Updated: 2024/05/24 16:34:23 by apimikov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include <fstream>
 #include "Replacer.hpp"
@@ -19,7 +31,6 @@ int	main(int argc, char **argv)
 			return (1);
 		}
 	}
-	std::cout << "Arguments are fine" << std::endl;
 	std::ifstream	input_file(argv[1]);
     	if (!input_file) 
 	{
@@ -39,7 +50,6 @@ int	main(int argc, char **argv)
 	Replacer rep = Replacer(input_file, argv[2], argv[3]);
 	input_file.close();
 	rep.findAndReplace();
-	std::cout << rep.getFullString();
 	outputFile << rep.getFullString();
 	outputFile.close();
 	return (0);
