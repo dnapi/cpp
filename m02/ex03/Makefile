@@ -1,6 +1,6 @@
 NAME = Fixed
 
-SRC = main.cpp Fixed.cpp Point.cpp
+SRC = main.cpp Fixed.cpp Point.cpp bsp.cpp
 
 FLAGS = -Wall -Wextra -Werror #-std=c++17
 INC = Fixed.hpp
