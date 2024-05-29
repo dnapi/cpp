@@ -15,6 +15,17 @@ ClapTrap::ClapTrap(std::string name): _name(name), _hit(10), _energy(10), _damag
 	std::cout << _name << " is created by constructor\n";
 }
 
+ClapTrap &ClapTrap::operator=(const ClapTrap &other)
+{
+	std::cout << " operator= is called\n";
+	if (this == &other)
+		return (*this);
+	_name = other._name;
+	_hit = other._hit;
+	_energy = other._energy;
+	_damage = other._damage;
+	return (*this);
+}
 
 void ClapTrap::attack(const std::string& target)
 {
@@ -59,6 +70,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 	{
 		_energy--;
 		_hit += amount;
+		std::cout << _name << " is repared\n";
 	}
 }
 
