@@ -1,9 +1,9 @@
-NAME = Fixed
+NAME = a.out
 
-SRC = main.cpp Fixed.cpp Point.cpp bsp.cpp
+SRC = main.cpp ClapTrap.cpp ScavTrap.cpp
 
 FLAGS = -Wall -Wextra -Werror #-std=c++17
-INC = Fixed.hpp
+INC = ClapTrap.hpp
 OBJ = $(SRC:.cpp=.o)
 CC = c++
 
