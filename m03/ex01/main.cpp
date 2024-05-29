@@ -15,6 +15,7 @@ int	main()
 	st.attack("a door");
 	st.takeDamage(42);
 	st.beRepaired(10);
+	st.guardGate();
 
 	return (0);
 }	

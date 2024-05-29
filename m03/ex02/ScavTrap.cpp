@@ -44,3 +44,8 @@ void ScavTrap::attack(const std::string& target)
 			<< " causing " << _damage << " points of damage!\n";
 	}
 }
+
+void ScavTrap::guardGate()
+{
+	std::cout << "ScavTrap " << _name << " is now in Gate keeper mode\n";
+}
