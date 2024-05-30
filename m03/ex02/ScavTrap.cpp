@@ -16,6 +16,11 @@ ScavTrap::ScavTrap() : ClapTrap("unknown-scav")
 	 _damage = 20;
 }
 
+ScavTrap::ScavTrap(ScavTrap &other) : ClapTrap(other)
+{
+	std::cout << "ScavTrap copy constructor is called\n";
+}
+
 ScavTrap::~ScavTrap()
 {
 	std::cout << "Default ScavTrap destructor is called\n";

@@ -15,6 +15,15 @@ ClapTrap::ClapTrap(std::string name): _name(name), _hit(10), _energy(10), _damag
 	std::cout << _name << " is created by constructor\n";
 }
 
+ClapTrap::ClapTrap(ClapTrap &other)
+{	
+	_name = other._name;
+	_hit = other._hit;
+	_energy = other._energy;
+	_damage = other._damage;
+	std::cout << "ClapTrap copy constructor is called.\n";
+}
+
 ClapTrap &ClapTrap::operator=(const ClapTrap &other)
 {
 	std::cout << " operator= is called\n";

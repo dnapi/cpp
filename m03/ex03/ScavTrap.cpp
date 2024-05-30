@@ -5,7 +5,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	std::cout << "ScavTrap " << _name << " is created" << std::endl;
 	_hit = 100;
 	_energy = 50;
-	 _damage = 20;
+	_damage = 20;
 }
 
 ScavTrap::ScavTrap() : ClapTrap("defaultname") 
@@ -13,7 +13,7 @@ ScavTrap::ScavTrap() : ClapTrap("defaultname")
 	std::cout << "ScavTrap " << _name << " is created" << std::endl;
 	_hit = 100;
 	_energy = 50;
-	 _damage = 20;
+	_damage = 20;
 }
 
 ScavTrap::ScavTrap(ScavTrap &other) : ClapTrap(other)
@@ -26,7 +26,6 @@ ScavTrap::~ScavTrap()
 	std::cout << "Default ScavTrap destructor is called\n";
 }
 
-
 ScavTrap &ScavTrap::operator=(ScavTrap & other)
 {
 	std::cout << "ScavTrap's assignment  is called\n";
@@ -35,7 +34,6 @@ ScavTrap &ScavTrap::operator=(ScavTrap & other)
 	return (*this);
 }
  
-
 void ScavTrap::attack(const std::string& target)
 {
 	if (_hit == 0)

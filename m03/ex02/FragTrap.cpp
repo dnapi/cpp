@@ -4,21 +4,26 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
 	std::cout << "FragTrap " << _name << " is created" << std::endl;
 	_hit = 100;
-	_energy = 50;
-	 _damage = 20;
+	_energy = 100;
+	 _damage = 30;
 }
 
 FragTrap::FragTrap() : ClapTrap("unknown-scav") 
 {
 	std::cout << "FragTrap " << _name << " is created" << std::endl;
 	_hit = 100;
-	_energy = 50;
-	 _damage = 20;
+	_energy = 100;
+	 _damage = 30;
 }
 
 FragTrap::~FragTrap()
 {
 	std::cout << "Default FragTrap destructor is called\n";
+}
+
+FragTrap::FragTrap(FragTrap &other) : ClapTrap(other)
+{
+	std::cout << "FragTrap copy constructor is called\n";
 }
 
 FragTrap &FragTrap::operator=(FragTrap & other)

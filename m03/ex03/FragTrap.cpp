@@ -5,7 +5,7 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
 	std::cout << "FragTrap " << _name << " is created" << std::endl;
 	_hit = 100;
 	_energy = 100;
-	 _damage = 20;
+	 _damage = 30;
 }
 
 FragTrap::FragTrap() : ClapTrap("defaultname") 

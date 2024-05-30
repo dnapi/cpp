@@ -3,17 +3,17 @@
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
 	std::cout << "ScavTrap " << _name << " is created" << std::endl;
-	_hit = 100;
-	_energy = 50;
-	 _damage = 20;
+	this->_hit = 100;
+	this->_energy = 50;
+	this->_damage = 20;
 }
 
 ScavTrap::ScavTrap() : ClapTrap("unknown-scav") 
 {
 	std::cout << "ScavTrap " << _name << " is created" << std::endl;
-	_hit = 100;
-	_energy = 50;
-	 _damage = 20;
+	this->_hit = 100;
+	this->_energy = 50;
+	this->_damage = 20;
 }
 
 ScavTrap::~ScavTrap()
