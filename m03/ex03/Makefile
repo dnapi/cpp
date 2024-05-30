@@ -2,7 +2,8 @@ NAME = a.out
 
 SRC = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
 
-FLAGS = -Wall -Wextra -Werror #-std=c++17
+FLAGS = -Wall -Wextra -Werror # -Wshadow #-Wno-shadow
+#FLAGS = -Wall -Wextra -Werror -Wno-shadow
 INC = ClapTrap.hpp ScavTrap.hpp FragTrap.hpp DiamondTrap.hpp
 OBJ = $(SRC:.cpp=.o)
 CC = c++
