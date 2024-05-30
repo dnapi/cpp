@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apimikov <apimikov@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/30 14:57:55 by apimikov          #+#    #+#             */
+/*   Updated: 2024/05/30 14:58:22 by apimikov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap(): _name("defaultname"), _hit(10), _energy(10), _damage(0)
@@ -45,7 +57,7 @@ void ClapTrap::attack(const std::string& target)
 	else
 	{
 		_energy--;
-		std::cout << _name
+		std::cout << "ClapTrap " << _name
 			<< " attacks " << target
 			<< " causing " << _damage << " points of damage!\n";
 	}

@@ -1,4 +1,16 @@
-#include <iostream>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apimikov <apimikov@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/30 14:52:25 by apimikov          #+#    #+#             */
+/*   Updated: 2024/05/30 14:52:36 by apimikov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+//#include <iostream>
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"

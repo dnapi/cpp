@@ -1,10 +1,16 @@
-#include "DiamondTrap.hpp"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apimikov <apimikov@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/30 14:58:44 by apimikov          #+#    #+#             */
+/*   Updated: 2024/05/30 14:59:11 by apimikov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-//	ClapTrap(name + "_clap_name"),
-//	FragTrap(name),
-//	ScavTrap(name)
-//	FragTrap(name+ "_clap_name"),
-//	ScavTrap("_clap_name"),
+#include "DiamondTrap.hpp"
 
 DiamondTrap::DiamondTrap() : ScavTrap(), FragTrap()
 {
@@ -15,12 +21,8 @@ DiamondTrap::DiamondTrap(const std::string name) :
 	ClapTrap(name + "_clap_name"),
 	_name(name)
 {
-
-//	_hit = FragTrap::_hit;
-	_energy = 50; //ScavTrap::_energy;
-//	_damage = FragTrap::_damage;
+	_energy = 50;
 	std::cout << "DiamondTrap " << _name << " is constructed\n";
-	whoAmI();
 }
 
 DiamondTrap::DiamondTrap(DiamondTrap &other) :

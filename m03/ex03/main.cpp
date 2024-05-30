@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apimikov <apimikov@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/30 15:00:27 by apimikov          #+#    #+#             */
+/*   Updated: 2024/05/30 15:05:15 by apimikov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
-//#include "ClapTrap.hpp"
-//#include "ScavTrap.hpp"
-//#include "FragTrap.hpp"
+#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 #include "DiamondTrap.hpp"
 
 int	main()
@@ -42,6 +54,9 @@ int	main()
 	std::cout << " ----- Diamond 3 -----\n";
 	DiamondTrap dt3("Trap");
 	dt3.whoAmI();
+	std::cout << " ----- Diamond 4 -----\n";
+	DiamondTrap dt4;
+	dt4 = dt3;
 	std::cout << " ----- end of Diamond era -----\n\n";
 	
 	return (0);

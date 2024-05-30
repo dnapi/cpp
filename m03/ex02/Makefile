@@ -3,7 +3,7 @@ NAME = a.out
 SRC = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 
 FLAGS = -Wall -Wextra -Werror #-std=c++17
-INC = ClapTrap.hpp
+INC = ClapTrap.hpp ScavTrap.hpp FragTrap.hpp
 OBJ = $(SRC:.cpp=.o)
 CC = c++
 
