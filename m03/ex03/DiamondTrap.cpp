@@ -6,7 +6,7 @@
 /*   By: apimikov <apimikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 14:58:44 by apimikov          #+#    #+#             */
-/*   Updated: 2024/05/30 14:59:11 by apimikov         ###   ########.fr       */
+/*   Updated: 2024/05/30 18:39:04 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 DiamondTrap::DiamondTrap() : ScavTrap(), FragTrap()
 {
+	_energy = 50;
 	std::cout << "Default constructor DiamondTrap is called\n";
 }
 
@@ -49,7 +50,7 @@ DiamondTrap & DiamondTrap::operator=(DiamondTrap &other)
 void DiamondTrap::whoAmI()
 {
 	std::cout << "Hei! My name is " << _name 
-		<< ", my ClapTrap name is" << ClapTrap::_name << std::endl;
+		<< ", my ClapTrap name is " << ClapTrap::_name << std::endl;
 	std::cout << "my hit points = " << this->_hit
 		<< "\n   energy points = " << this->_energy
 		<< "\n   attack damage = " << this->_damage

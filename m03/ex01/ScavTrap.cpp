@@ -6,7 +6,7 @@
 /*   By: apimikov <apimikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 14:03:00 by apimikov          #+#    #+#             */
-/*   Updated: 2024/05/30 14:03:02 by apimikov         ###   ########.fr       */
+/*   Updated: 2024/05/30 18:38:28 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ ScavTrap::ScavTrap() : ClapTrap("unknown-scav")
 ScavTrap::~ScavTrap()
 {
 	std::cout << "Default ScavTrap destructor is called\n";
+}
+
+ScavTrap::ScavTrap(ScavTrap &other) : ClapTrap(other)
+{
+	std::cout << "ScavTrap copy constructor is called\n";
 }
 
 ScavTrap &ScavTrap::operator=(ScavTrap & other)
