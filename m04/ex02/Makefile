@@ -1,9 +1,8 @@
 NAME = a.out
 
-SRC = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
-
-FLAGS = -Wall -Wextra -Werror #-std=c++17
-INC = ClapTrap.hpp
+SRC = main.cpp Animal.cpp Cat.cpp Dog.cpp Brain.cpp
+FLAGS = -Wall -Wextra -Werror -std=c++17
+INC = Animal.hpp Cat.hpp Brain.cpp
 OBJ = $(SRC:.cpp=.o)
 CC = c++
 

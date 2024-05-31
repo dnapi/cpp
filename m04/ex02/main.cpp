@@ -1,9 +1,12 @@
 #include "Animal.hpp"
+#include "Animal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
 
 
 int main() {
+//	const Animal  aaa;
+//	(void)aaa;
 	const Animal* i = new Cat();
 	const Animal* j = new Dog(); 
 	const Animal* k = new Dog(); 
