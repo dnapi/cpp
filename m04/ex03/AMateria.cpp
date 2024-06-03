@@ -1,0 +1,31 @@
+#include "AMateria.hpp"
+
+AMateria::AMateria(){
+	std::cout << "AMateria: Default constructor is called\n";
+	type = "undef-type";
+}
+
+AMateria::~AMateria(){
+	std::cout  << "AMateria: Destructor is called\n";
+}
+
+AMateria::AMateria(const AMateria& other): type(other.type){
+	std::cout << "AMateria: Copy constructor for type " 
+		<< type << " is called\n";
+}
+
+AMateria::AMateria(std::string const& type_arg): type(type_arg){
+	std::cout << "AMateria: constructor from string for type " 
+		<< type << " is called\n";
+}
+
+AMateria& AMateria::operator=(const AMateria& other){
+	std::cout << "AMateria: operator = for type " << type << " is called\n";
+	(void)other;
+	return (*this);
+}
+
+std::string const & AMateria::getType() const {
+	std::cout << "AMateria: getter for type " << type << " is called\n";
+	return (type);
+}

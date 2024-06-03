@@ -1,8 +1,9 @@
 NAME = a.out
 
-SRC = main.cpp Animal.cpp Cat.cpp Dog.cpp Brain.cpp
+SRC = main.cpp AMateria.cpp Ice.cpp #Cure.cpp
 FLAGS = -Wall -Wextra -Werror -std=c++17
-INC = Animal.hpp Cat.hpp Brain.cpp
+INC = AMateria.hpp
+#INC = $(SRC:.cpp=.hpp)
 OBJ = $(SRC:.cpp=.o)
 CC = c++
 
