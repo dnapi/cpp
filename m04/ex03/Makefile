@@ -1,6 +1,6 @@
 NAME = a.out
 
-SRC = main.cpp AMateria.cpp Ice.cpp #Cure.cpp
+SRC = main.cpp AMateria.cpp Ice.cpp #Character.cpp #Cure.cpp
 FLAGS = -Wall -Wextra -Werror -std=c++17
 INC = AMateria.hpp
 #INC = $(SRC:.cpp=.hpp)

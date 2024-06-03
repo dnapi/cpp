@@ -7,7 +7,7 @@ int main(){
 	Ice i;
 	m = &i;
 	AMateria* p = m->clone();
-	std::cout << "ice="p->getType()  << std::endl;
+	std::cout << "ice=" << p->getType()  << std::endl;
 
 	delete p;
 	return 0;

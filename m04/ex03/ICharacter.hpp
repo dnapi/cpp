@@ -1,5 +1,9 @@
+#pragma once
 
-class ICharacter 
+#include <string>
+#include "AMateria.hpp"
+
+class ICharacter
 {
 	public:
 	virtual ~ICharacter() {}
