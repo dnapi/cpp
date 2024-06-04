@@ -6,7 +6,7 @@
 /*   By: apimikov <apimikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 13:02:50 by apimikov          #+#    #+#             */
-/*   Updated: 2024/06/04 13:03:00 by apimikov         ###   ########.fr       */
+/*   Updated: 2024/06/04 13:12:35 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 
 int main() {
-//	const Animal  aaa;
+//	const Animal  aaa;  // leads to error during compilation
 //	(void)aaa;
 	const Animal* i = new Cat();
 	const Animal* j = new Dog(); 
@@ -37,7 +37,6 @@ int main() {
 		tmp.makeSound();
 	}
 
-	//delete i;
 	for (const Animal* a : zoo) {
 		delete a;
 	}

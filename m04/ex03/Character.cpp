@@ -6,7 +6,7 @@
 /*   By: apimikov <apimikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 12:58:32 by apimikov          #+#    #+#             */
-/*   Updated: 2024/06/04 12:58:34 by apimikov         ###   ########.fr       */
+/*   Updated: 2024/06/04 13:23:27 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ std::string const & Character::getName() const{
 void Character::equip(AMateria* m){
 	if (!m)
 	{
-		std::cout << "Character: Materia does note exist";
+		std::cout << "Character: Materia does note exist\n";
 		return;
 	}
 	std::cout << "Character: equip function call by " << _name 
