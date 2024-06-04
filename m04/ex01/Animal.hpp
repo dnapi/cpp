@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apimikov <apimikov@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/04 13:01:23 by apimikov          #+#    #+#             */
+/*   Updated: 2024/06/04 13:01:27 by apimikov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #pragma once
 
 #include <iostream>
@@ -6,7 +18,6 @@ class Animal
 {
 	public:
 		Animal();
-//		Animal(const std::string);
 		Animal(const Animal&);
 		virtual	~Animal();
 		Animal &operator=(const Animal&);

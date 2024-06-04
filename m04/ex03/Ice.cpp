@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apimikov <apimikov@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/04 12:59:17 by apimikov          #+#    #+#             */
+/*   Updated: 2024/06/04 12:59:18 by apimikov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Ice.hpp"
 
 Ice::Ice(){
@@ -28,22 +40,7 @@ Ice* Ice::clone() const{
 	return i;
 }
 
-// Cure: "* heals <name>’s wounds *"
 void	Ice::use(ICharacter& target){
 	std::cout << "* shoots an ice bolt at " 
 		<< target.getName() << " *\n";
 }
-
-/*
-std::string const & Ice::getType() const {
-	std::cout << "Ice: getter for type " << type << " is called\n";
-	return (type);
-}
-*/
-
-/*
-Ice::Ice(std::string const& type_arg): type(type_arg){
-	std::cout << "Ice: constructor from string for type " 
-		<< type << " is called\n";
-}
-*/
