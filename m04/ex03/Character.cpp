@@ -1,6 +1,6 @@
 #include "Character.hpp"
 
-Character::Character(){
+Character::Character(): _name("Noname"){
 	std::cout << "Character: Default constructor is called\n";
 	for (int i = 0; i < 4; ++i){
 		_invent[i] = nullptr;
@@ -11,6 +11,7 @@ Character::~Character(){
 	std::cout  << "Character: Destructor is called\n";
 	for (int i = 0; i < 4; ++i){
 		delete _invent[i];
+		_invent[i] = nullptr;
 	}
 }
 
@@ -23,10 +24,10 @@ Character::Character(std::string name): _name(name){
 }
 
 Character::Character(const Character& other){
-	(void)other;
 	std::cout << "Character: Copy constructor is called\n";
 	_name = other._name;
 	for (int i = 0; i < 4; ++i){
+		delete _invent[i];
 		_invent[i] = other._invent[i]->clone();
 	}
 }
@@ -48,14 +49,46 @@ std::string const & Character::getName() const{
 }
 
 void Character::equip(AMateria* m){
+	std::cout << "Character: equip function call by " << _name 
+		<< " to take\n" << m->getType() << "\n";
+	if (!m)
+	{
+		std::cout << "Character: Materia does note exist";
+		return;
+	}
 	for (int i = 0; i < 4; ++i){
 		if (_invent[i] != nullptr)
 			continue;
 		_invent[i] = m;
-		break;
+		return;
 	}
+	std::cout << "Character: no place to equip\n";
 }
+
 void Character::unequip(int idx){
+	std::cout << "Character: unequip function call by " << _name << "\n";
+	if (idx < 0 || idx > 3)
+	{
+		std::cout << "Character: position " << idx << "is out of scope\n";
+		return; 
+	}
+	if (_invent[idx] == nullptr)
+		std::cout << "Character: there is nothing to unequip.\n";
+	else
+		_invent[idx] = nullptr;
 }
+
 void Character::use(int idx, ICharacter& target){
+	std::cout << "Character: use function call by " << _name 
+		<< " to apply materia " << idx
+		<< " on " << target.getName() << "\n";
+	if (idx < 0 || idx > 3)
+	{
+		std::cout << "Character: position " << idx << "is out of scope\n";
+		return;
+	}
+	if(_invent[idx])
+		_invent[idx]->use(target);
+	else
+		std::cout << "There is no materia at position " << idx << std::endl;
 }

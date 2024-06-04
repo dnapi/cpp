@@ -29,3 +29,9 @@ std::string const & AMateria::getType() const {
 	std::cout << "AMateria: getter for type " << type << " is called\n";
 	return (type);
 }
+
+void AMateria::use(ICharacter& target)
+{
+	std::cout << "AMateria: AMateria is used for character " 
+		<< target.getName() << std::endl;
+}

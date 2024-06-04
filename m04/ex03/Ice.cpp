@@ -9,8 +9,9 @@ Ice::~Ice(){
 	std::cout  << "Ice: Destructor is called\n";
 }
 
-Ice::Ice(const Ice& other){
+Ice::Ice(const Ice& other): AMateria(){
 	(void)other;
+	type = "ice";
 	std::cout << "Ice: Copy constructor for type " 
 		<< type << " is called\n";
 }
@@ -25,6 +26,12 @@ Ice* Ice::clone() const{
 	std::cout << "Ice: clone for type " << type << " is called\n";
 	Ice* i = new Ice();
 	return i;
+}
+
+// Cure: "* heals <name>’s wounds *"
+void	Ice::use(ICharacter& target){
+	std::cout << "* shoots an ice bolt at " 
+		<< target.getName() << " *\n";
 }
 
 /*
