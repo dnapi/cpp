@@ -38,7 +38,8 @@ void MateriaSource::learnMateria(AMateria* m){
 		std::cout << "MateriaSource: Materia does note exist";
 		return;
 	}
-	std::cout << "MateriaSource: learnMateria function called for\n" << m->getType() << "\n";
+	std::cout << "MateriaSource: learnMateria function called for " 
+		<< m->getType() << "\n";
 	for (int i = 0; i < 4; ++i){
 		if (_invent[i] != nullptr)
 			continue;
@@ -46,6 +47,8 @@ void MateriaSource::learnMateria(AMateria* m){
 		return;
 	}
 	std::cout << "MateriaSource: no place to equip\n";
+	delete m;
+	m = nullptr;
 }
 
 AMateria* MateriaSource::createMateria(std::string const & type){

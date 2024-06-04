@@ -26,7 +26,7 @@ AMateria& AMateria::operator=(const AMateria& other){
 }
 
 std::string const & AMateria::getType() const {
-	std::cout << "AMateria: getter for type " << type << " is called\n";
+//	std::cout << "AMateria: " << type << " is called\n";
 	return (type);
 }
 

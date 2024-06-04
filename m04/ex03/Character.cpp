@@ -92,3 +92,13 @@ void Character::use(int idx, ICharacter& target){
 	else
 		std::cout << "There is no materia at position " << idx << std::endl;
 }
+
+AMateria* Character::getInvent(int idx) const
+{
+	if (idx < 0 || idx > 3)
+	{
+		std::cout << "Character: position " << idx << "is out of scope\n";
+		return nullptr;
+	}
+	return _invent[idx];
+}
