@@ -49,13 +49,13 @@ std::string const & Character::getName() const{
 }
 
 void Character::equip(AMateria* m){
-	std::cout << "Character: equip function call by " << _name 
-		<< " to take\n" << m->getType() << "\n";
 	if (!m)
 	{
 		std::cout << "Character: Materia does note exist";
 		return;
 	}
+	std::cout << "Character: equip function call by " << _name 
+		<< " to take\n" << m->getType() << "\n";
 	for (int i = 0; i < 4; ++i){
 		if (_invent[i] != nullptr)
 			continue;

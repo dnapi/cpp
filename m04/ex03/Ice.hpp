@@ -12,5 +12,5 @@ class Ice: public AMateria
 		Ice(const Ice&);
 		Ice& operator=(const Ice& other);
 		Ice* clone() const override;
-		void use(ICharacter& target);
+		void use(ICharacter& target) override;
 };

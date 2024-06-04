@@ -2,6 +2,8 @@
 #include "Ice.hpp"
 #include "ICharacter.hpp"
 #include "Character.hpp"
+#include "IMateriaSource.hpp"
+#include "MateriaSource.hpp"
 
 int main(){
 	AMateria* m;
@@ -15,23 +17,19 @@ int main(){
 	AMateria* p4 = m->clone();
 //	std::cout << "ice=" << p->getType()  << std::endl;
 
+	AMateria* tmp;
+	MateriaSource source;
+	source.learnMateria(m);
+	tmp = source.createMateria("ice");
 	Character c;
+	c.equip(tmp);
 	Character c1("Cat");
-	c.equip(p);
-	c.equip(p1);
-	c.equip(p2);
-	c.equip(p3);
-	c.equip(p4);
-	c.unequip(2);
-	c.equip(p2);
-	c.use(2,c1);
-	c.use(3,c1);
 	c.use(0,c1);
-	c.use(8,c1);
-/*	delete p;
+	std::cout << "--- end of test ---\n";
+	delete p;
 	delete p1;
 	delete p2;
-	delete p3;*/
+	delete p3;
 	delete p4;
 /*	p = nullptr;
 	p1 = nullptr;
