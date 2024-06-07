@@ -30,30 +30,38 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	(void)other;
 //	if (this != &other)
 //		_is_signed = other._is_signed;
-	std::cout <<  "Note that coping of signature is not legal in Finland. The legislation that addresses forgery, including the forgery of signatures, is primarily found in the Penal Code (Rikoslaki). Specifically, Chapter 33 of the Penal Code. \n";
+	std::cout
+	    << "#################################################################################\n"
+		<< "#  Note that coping of signature is not legal in Finland.                       #\n" 
+		<< "#  The legislation that addresses forgery, including the forgery of signatures, #\n"
+		<< "#  is primarily found in the Penal Code (Rikoslaki).                            #\n" 
+		<< "#  Specifically, Chapter 33 of the Penal Code.                                  #\n"
+	    << "#################################################################################\n";
 	return (*this);
 }
 
 void ShrubberyCreationForm::execute(Bureaucrat const& executor) const{
 	beExecuted(executor);
-	ofile_name = _target + "_shrubbery";
-	std::ofstream	ofs(ofile_name);
-	if (!ofs) 
+	std::string ofile_name = _target + "_shrubbery";
+	std::ofstream ofs(ofile_name, std::ofstream::app);
+	ofs.exceptions(std::ofstream::failbit | std::ofstream::badbit);
+/*	if (!ofs) 
 	{
 	    std::cout << "Could not open the file for writing: " 
 		<< ofile_name << std::endl;
-	    return (1);
+	    return ;
 	}	
-	std::string str = "\n"
-"          _____ _                _     _                     \n "
-"         / ____| |              | |   | |                    \n "
-"        | (___ | |__  _ __ _   _| |__ | |__   ___ _ __ _   _ \n "
-"         \___ \| '_ \| '__| | | | '_ \| '_ \ / _ \ '__| | | |\n "
-"         ____) | | | | |  | |_| | |_) | |_) |  __/ |  | |_| |\n"
-"        |_____/|_| |_|_|   \__,_|_.__/|_.__/ \___|_|   \__, |\n"
-"                                                        __/ |\n"
-"                                                       |___/ \n"
-"	\n";
+*/
+	std::string str = 
+    "        _-_\n"
+    "     /~~   ~~\\\n"
+    "  /~~         ~~\\\n"
+    " {               }\n"
+    "  \\  _-     -_  /\n"
+    "    ~  \\ //  ~\n"
+    "_- -   | | _- _\n"
+    "  _ -  | |   -_\n"
+    "      // \\\n";
 	ofs << str;
 	ofs.close();
 }

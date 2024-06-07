@@ -35,7 +35,7 @@ const std::string Bureaucrat::getName(){
 	return _name;
 }
 
-int Bureaucrat::getGrade(){
+int Bureaucrat::getGrade() const {
 	return _grade;
 }
 
@@ -88,19 +88,26 @@ void Bureaucrat::signForm(AForm& form){
 
 
 void Bureaucrat::executeForm(AForm const& form){
-	if (form.getIsSigned()){
+	if (form.getIsSigned()) {
 		try{
-			form.beExecuted(*this);
+			form.execute(*this);
 			std::cout << _name << " executed " << form.getName() << std::endl;
+			return;
 		}
-		catch(AForm::GradeTooLowException& e){
+		catch(AForm::GradeTooLowException& e) {
 			std::cout << _name << " couldn’t execute " << form.getName() 
-				<< " because" << " Grade too low" << std::endl;
+				<< " because Grade too low" << std::endl;
+			return;
+		}
+		catch (const std::ios_base::failure& e) {
+			std::cout << _name << " couldn’t executed " << form.getName() << 
+			" because it is not available at this moment" << std::endl;
+        	return;
 		}
 	}
 	else {
 		std::cout << _name << " couldn’t executed" << form.getName() << 
-			" because" << " AForm allready signed" << std::endl;
+			" because it is not signed" << std::endl;
 	}
 	return;
 }
