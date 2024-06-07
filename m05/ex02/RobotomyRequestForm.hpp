@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apimikov <apimikov@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/07 15:16:59 by apimikov          #+#    #+#             */
+/*   Updated: 2024/06/07 15:22:45 by apimikov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #pragma once
 
 #include <string>
@@ -6,7 +18,6 @@
 #include <thread>
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
-
 
 //class Bureaucrait;
 
