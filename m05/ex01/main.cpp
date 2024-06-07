@@ -2,7 +2,7 @@
 #include "Form.hpp"
 
 int main(){
-     if (0){
+     if (1){
 	Form f("boss", 42, 42);
 	std::cout << f << std::endl;
 	Form ff(f);

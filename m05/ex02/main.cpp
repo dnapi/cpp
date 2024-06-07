@@ -1,14 +1,18 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 int main(){
-     if (0){
-	AForm f("boss", 42, 42);
+     if (1){
+	ShrubberyCreationForm f("home");
 	std::cout << f << std::endl;
-	AForm ff(f);
-	AForm cc;
+	ShrubberyCreationForm ff(f);
+	ShrubberyCreationForm cc;
 	cc = ff;
 	std::cout << "\n";
+	}
+/*
+     if (0){
 	try {
 		AForm buro1("***High***", 0, 30);
 	}
@@ -37,8 +41,6 @@ int main(){
 		std::cout << e.what() << std::endl;
 	}
 	std::cout << "\n";
-     }
-     if (1){
 	Bureaucrat boss("Boss", 42);
 	Bureaucrat big_boss("BIG Boss", 1);
 	AForm	certif("Certif", 1, 50);
@@ -52,5 +54,6 @@ int main(){
 	std::cout << "*****  STOP machine  ******\n";
 	
      }
+*/
 	return 0;
 }

@@ -69,7 +69,7 @@ const char* Bureaucrat::GradeTooLowException::what() const noexcept {
 }
 
 void Bureaucrat::signForm(AForm& form){
-	if(!form.getIsSigned()){
+	if (!form.getIsSigned()){
 		try{
 			form.beSigned(*this);
 			std::cout << _name << " signed " << form.getName() << std::endl;
@@ -79,8 +79,28 @@ void Bureaucrat::signForm(AForm& form){
 				<< " because" << " Grade too low" << std::endl;
 		}
 	}
-	else
+	else {
 		std::cout << _name << " couldn’t sign " << form.getName() << 
 			" because" << " AForm allready signed" << std::endl;
+	}
+	return;
+}
+
+
+void Bureaucrat::executeForm(AForm const& form){
+	if (form.getIsSigned()){
+		try{
+			form.beExecuted(*this);
+			std::cout << _name << " executed " << form.getName() << std::endl;
+		}
+		catch(AForm::GradeTooLowException& e){
+			std::cout << _name << " couldn’t execute " << form.getName() 
+				<< " because" << " Grade too low" << std::endl;
+		}
+	}
+	else {
+		std::cout << _name << " couldn’t executed" << form.getName() << 
+			" because" << " AForm allready signed" << std::endl;
+	}
 	return;
 }

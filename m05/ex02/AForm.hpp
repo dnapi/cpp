@@ -2,6 +2,7 @@
 
 #include <string>
 #include <iostream>
+#include <fstream>
 #include "Bureaucrat.hpp"
 
 class Bureaucrat;
@@ -13,10 +14,10 @@ class AForm{
 		AForm(const AForm&);
 		AForm(std::string, int, int);
 		AForm& operator=(const AForm&);
-		std::string getName();
-		bool getIsSigned();
-		int getGradeToSign();
-		int getGradeToExec();
+		std::string getName() const;
+		bool getIsSigned() const;
+		int getGradeToSign() const;
+		int getGradeToExec() const;
 		class GradeTooHighException: public std::exception {
 			public:
 				virtual const char* what() const noexcept override;
@@ -26,7 +27,8 @@ class AForm{
 				virtual const char* what() const noexcept override;
 		};
 		void beSigned(Bureaucrat&);
-		//virtual void execute(Bureaucrat const & executor) const = 0;
+		void beExecuted(const Bureaucrat&) const;
+		virtual void execute(Bureaucrat const & executor) const = 0;
 		void checkGrade(int);
 	private:
 		const std::string	_name;

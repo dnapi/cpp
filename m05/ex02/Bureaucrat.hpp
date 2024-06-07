@@ -26,6 +26,7 @@ class Bureaucrat{
 				virtual const char* what() const noexcept override;
 		};
 		void signForm(AForm&);
+		void executeForm(AForm const&);
 	private:
 		const std::string	_name;
 		int	_grade;

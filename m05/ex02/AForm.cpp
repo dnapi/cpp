@@ -48,19 +48,19 @@ std::ostream& operator<<(std::ostream& os, AForm& form){
 	return os;
 }
 
-std::string AForm::getName(){
+std::string AForm::getName() const {
 	return _name;
 }
 
-bool AForm::getIsSigned(){
+bool AForm::getIsSigned() const {
 	return _is_signed;
 }
 
-int AForm::getGradeToSign(){
+int AForm::getGradeToSign() const {
 	return _grade_to_sign;
 }
 
-int AForm::getGradeToExec(){
+int AForm::getGradeToExec() const {
 	return _grade_to_exec;
 }
 
@@ -76,6 +76,11 @@ void AForm::beSigned(Bureaucrat& bura){
 		throw GradeTooLowException();
 	else
 		_is_signed = true;
+}
+
+void AForm::beExecuted(const Bureaucrat& bura) const {
+	if (bura.getGrade() > _grade_to_exec)
+		throw GradeTooLowException();
 }
 
 const char* AForm::GradeTooHighException::what() const noexcept {

@@ -1,8 +1,10 @@
 NAME = a.out
 
-SRC = main.cpp Bureaucrat.cpp AForm.cpp
+SRC = main.cpp Bureaucrat.cpp AForm.cpp \
+	ShrubberyCreationForm.cpp
 FLAGS = -Wall -Wextra -Werror -std=c++17
-INC = Bureaucrat.hpp AForm.hpp
+INC = Bureaucrat.hpp AForm.hpp \
+	ShrubberyCreationForm.hpp
 OBJ = $(SRC:.cpp=.o)
 CC = c++
 
