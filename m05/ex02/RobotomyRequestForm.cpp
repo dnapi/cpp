@@ -6,7 +6,7 @@
 /*   By: apimikov <apimikov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 15:16:55 by apimikov          #+#    #+#             */
-/*   Updated: 2024/06/07 15:16:57 by apimikov         ###   ########.fr       */
+/*   Updated: 2024/06/08 08:05:13 by apmikov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ RobotomyRequestForm::~RobotomyRequestForm() {
 }
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target):
-	AForm("Robotomy", 145, 137),
+	AForm("Robotomy", 72, 45),
 	_target(target)
 {
 	std::cout << "RobotomyRequestForm: Constructor call with target: " 

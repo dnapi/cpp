@@ -29,6 +29,7 @@ class AForm{
 		void beSigned(Bureaucrat&);
 		void beExecuted(const Bureaucrat&) const;
 		virtual void execute(Bureaucrat const & executor) const = 0;
+		virtual AForm* clone() const = 0;
 		void checkGrade(int);
 	private:
 		const std::string	_name;

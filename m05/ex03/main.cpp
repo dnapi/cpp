@@ -9,6 +9,7 @@ int main(){
     
 	Bureaucrat boss("boss", 1);
 	Bureaucrat junior("junior", 150);
+	Intern intern;
 	ShrubberyCreationForm form_s("home");
 	RobotomyRequestForm form_r("cluster");
 	PresidentialPardonForm form_p("42 school");
@@ -39,6 +40,17 @@ int main(){
 	boss.signForm(form_p);
 	junior.executeForm(form_p);
 	boss.executeForm(form_p);
+	
+	std::cout << "\n ------   Test 4  Intern ------- \n";
+	AForm* tmp = intern.makeForm("formmmm", "targgget");
+	(void)tmp;
+	tmp = intern.makeForm("robotomy request", "Bender");
+	delete tmp;
+//	junior.executeForm(form_p);
+//	junior.signForm(form_p);
+//	boss.signForm(form_p);
+//	junior.executeForm(form_p);
+//	boss.executeForm(form_p);
 	
 	std::cout << "\n\n ------   END ------- \n" << std::endl;
 /*

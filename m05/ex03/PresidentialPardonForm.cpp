@@ -1,6 +1,6 @@
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(): AForm("Presidential", 25, 5) {
+PresidentialPardonForm::PresidentialPardonForm(): AForm("presidential pardon", 25, 5) {
 	std::cout << "PresidentialPardonForm: Default Constructor called\n";
    _target = "default";	
 }
@@ -10,7 +10,7 @@ PresidentialPardonForm::~PresidentialPardonForm() {
 }
 
 PresidentialPardonForm::PresidentialPardonForm(std::string target):
-	AForm("Presidential", 25, 5),
+	AForm("presidential pardon", 25, 5),
 	_target(target)
 {
 	std::cout << "PresidentialPardonForm: Constructor call with target: " 
@@ -43,6 +43,11 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
 void PresidentialPardonForm::execute(Bureaucrat const& executor) const{
 	beExecuted(executor);
 	std::cout << _target << " has been pardoned by Zaphod Beeblebrox\n";
+}
+
+AForm* PresidentialPardonForm::clone() const{
+        AForm* p = new PresidentialPardonForm(*this);
+        return p;
 }
 
 /*

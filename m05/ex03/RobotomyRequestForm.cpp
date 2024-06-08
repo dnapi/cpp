@@ -1,6 +1,6 @@
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(): AForm("Robotomy", 72, 45) {
+RobotomyRequestForm::RobotomyRequestForm(): AForm("robotomy request", 72, 45) {
 	std::cout << "RobotomyRequestForm: Default Constructor called\n";
    _target = "default";	
 }
@@ -10,7 +10,7 @@ RobotomyRequestForm::~RobotomyRequestForm() {
 }
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target):
-	AForm("Robotomy", 145, 137),
+	AForm("robotomy request", 72, 45),
 	_target(target)
 {
 	std::cout << "RobotomyRequestForm: Constructor call with target: " 
@@ -58,6 +58,11 @@ void RobotomyRequestForm::execute(Bureaucrat const& executor) const{
 	else
 		std::cout << "Robotomization of " << _target << " failed (50\% chance)" << std::endl;
 
+}
+
+AForm* RobotomyRequestForm::clone() const{
+        AForm* p = new RobotomyRequestForm(*this);
+        return p;
 }
 
 /*

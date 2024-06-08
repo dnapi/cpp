@@ -16,6 +16,7 @@ class ShrubberyCreationForm: public AForm{
 		ShrubberyCreationForm(std::string target);
 		ShrubberyCreationForm& operator=(const ShrubberyCreationForm&);
 		void execute(Bureaucrat const& executor) const override;
+		AForm* clone() const override;
 	private:
 		std::string _target;
 };

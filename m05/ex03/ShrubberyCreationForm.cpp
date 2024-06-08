@@ -1,6 +1,6 @@
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(): AForm("Shrubbery", 145, 137) {
+ShrubberyCreationForm::ShrubberyCreationForm(): AForm("shrubbery creation", 145, 137) {
 	std::cout << "ShrubberyCreationForm: Default Constructor called\n";
    _target = "default";	
 }
@@ -10,7 +10,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm() {
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target):
-	AForm("Shrubbery", 145, 137),
+	AForm("shrubbery creation", 145, 137),
 	_target(target)
 {
 	std::cout << "ShrubberyCreationForm: Constructor call with target: " 
@@ -64,6 +64,11 @@ void ShrubberyCreationForm::execute(Bureaucrat const& executor) const{
     "      // \\\n";
 	ofs << str;
 	ofs.close();
+}
+
+AForm* ShrubberyCreationForm::clone() const{
+	AForm* p = new ShrubberyCreationForm(*this);
+	return p;
 }
 
 /*
