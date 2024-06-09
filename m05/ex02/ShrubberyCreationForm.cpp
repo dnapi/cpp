@@ -57,13 +57,6 @@ void ShrubberyCreationForm::execute(Bureaucrat const& executor) const{
 	std::string ofile_name = _target + "_shrubbery";
 	std::ofstream ofs(ofile_name, std::ofstream::app);
 	ofs.exceptions(std::ofstream::failbit | std::ofstream::badbit);
-/*	if (!ofs) 
-	{
-	    std::cout << "Could not open the file for writing: " 
-		<< ofile_name << std::endl;
-	    return ;
-	}	
-*/
 	std::string str = 
     "        _-_\n"
     "     /~~   ~~\\\n"

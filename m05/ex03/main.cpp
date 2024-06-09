@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apimikov <apimikov@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/09 11:09:58 by apimikov          #+#    #+#             */
+/*   Updated: 2024/06/09 11:10:00 by apimikov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
@@ -43,14 +55,24 @@ int main(){
 	
 	std::cout << "\n ------   Test 4  Intern ------- \n";
 	AForm* tmp = intern.makeForm("formmmm", "targgget");
-	(void)tmp;
 	tmp = intern.makeForm("robotomy request", "Bender");
+	std::cout << *tmp;
 	delete tmp;
-//	junior.executeForm(form_p);
-//	junior.signForm(form_p);
-//	boss.signForm(form_p);
-//	junior.executeForm(form_p);
-//	boss.executeForm(form_p);
+	tmp = nullptr;
+	tmp = intern.makeForm("shrubbery creation", "home");
+	std::cout << *tmp;
+	delete tmp;
+	tmp = nullptr;
+	tmp = intern.makeForm("presidential pardon", "cat");
+	std::cout << *tmp;
+	junior.executeForm(*tmp);
+	junior.signForm(*tmp);
+	boss.signForm(*tmp);
+	std::cout << *tmp;
+	junior.executeForm(*tmp);
+	boss.executeForm(*tmp);
+	delete tmp;
+	tmp = nullptr;
 	
 	std::cout << "\n\n ------   END ------- \n" << std::endl;
 /*

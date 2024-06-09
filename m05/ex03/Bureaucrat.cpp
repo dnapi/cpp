@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apimikov <apimikov@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/09 11:09:39 by apimikov          #+#    #+#             */
+/*   Updated: 2024/06/09 11:15:52 by apimikov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat(): _name("Chupacabra"), _grade(1) {
@@ -101,12 +113,12 @@ void Bureaucrat::executeForm(AForm const& form){
 		}
 		catch (const std::ios_base::failure& e) {
 			std::cout << _name << " couldn’t executed " << form.getName() << 
-			" because it is not available at this moment" << std::endl;
+			" because " << form.getTarget() << " is not available at this moment" << std::endl;
         	return;
 		}
 	}
 	else {
-		std::cout << _name << " couldn’t executed" << form.getName() << 
+		std::cout << _name << " couldn’t executed " << form.getName() << 
 			" because it is not signed" << std::endl;
 	}
 	return;

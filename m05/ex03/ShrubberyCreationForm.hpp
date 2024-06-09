@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apimikov <apimikov@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/09 11:10:33 by apimikov          #+#    #+#             */
+/*   Updated: 2024/06/09 11:10:37 by apimikov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #pragma once
 
 #include <string>
@@ -17,8 +29,6 @@ class ShrubberyCreationForm: public AForm{
 		ShrubberyCreationForm& operator=(const ShrubberyCreationForm&);
 		void execute(Bureaucrat const& executor) const override;
 		AForm* clone() const override;
-	private:
-		std::string _target;
 };
 		
 //std::ostream& operator<<(std::ostream&, ShrubberyCreationForm&);

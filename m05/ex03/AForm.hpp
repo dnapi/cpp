@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apimikov <apimikov@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/09 11:09:32 by apimikov          #+#    #+#             */
+/*   Updated: 2024/06/09 11:09:35 by apimikov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #pragma once
 
 #include <string>
@@ -18,6 +30,8 @@ class AForm{
 		bool getIsSigned() const;
 		int getGradeToSign() const;
 		int getGradeToExec() const;
+		std::string getTarget() const;
+		void setTarget(std::string);
 		class GradeTooHighException: public std::exception {
 			public:
 				virtual const char* what() const noexcept override;
@@ -31,6 +45,8 @@ class AForm{
 		virtual void execute(Bureaucrat const & executor) const = 0;
 		virtual AForm* clone() const = 0;
 		void checkGrade(int);
+	protected:
+		std::string _target;
 	private:
 		const std::string	_name;
 		bool			_is_signed;

@@ -19,8 +19,6 @@
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
-//class Bureaucrait;
-
 class RobotomyRequestForm: public AForm{
 	public:
 		RobotomyRequestForm();

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apimikov <apimikov@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/09 11:10:15 by apimikov          #+#    #+#             */
+/*   Updated: 2024/06/09 11:23:36 by apimikov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "RobotomyRequestForm.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm(): AForm("robotomy request", 72, 45) {
@@ -10,24 +22,24 @@ RobotomyRequestForm::~RobotomyRequestForm() {
 }
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target):
-	AForm("robotomy request", 72, 45),
-	_target(target)
+	AForm("robotomy request", 72, 45)
 {
+	_target = target;
 	std::cout << "RobotomyRequestForm: Constructor call with target: " 
 		<< _target << "\n";
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other):
-	AForm(other),
-	_target(other._target)
+	AForm(other)
 {
+	_target = other._target;
 	std::cout << "RobotomyRequestForm: Copy constructor called for target: " 
 		<<_target << "\n";
 }
 
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& other){
 	std::cout << "RobotomyRequestForm: operator= call for name=" << getName() << "\n";
-	(void)other;
+	_target = other._target;
 //	if (this != &other)
 //		_is_signed = other._is_signed;
 	std::cout
@@ -54,9 +66,9 @@ void RobotomyRequestForm::execute(Bureaucrat const& executor) const{
 	}
 	srand(time(NULL));
 	if (rand() % 2)
-		std::cout << _target << " has been robotomized (50\% chance)" << std::endl;
+		std::cout << getTarget() << " has been robotomized (50\% chance)" << std::endl;
 	else
-		std::cout << "Robotomization of " << _target << " failed (50\% chance)" << std::endl;
+		std::cout << "Robotomization of " << getTarget() << " failed (50\% chance)" << std::endl;
 
 }
 

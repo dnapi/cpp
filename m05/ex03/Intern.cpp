@@ -1,17 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Intern.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apimikov <apimikov@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/09 11:06:13 by string            #+#    #+#             */
+/*   Updated: 2024/06/09 11:09:53 by apimikov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Intern.hpp"
 
 Intern::Intern() {
 	std::cout << "Intern: Default constructor called\n";
-	_drafts[0] = new ShrubberyCreationForm(target);
-	_drafts[1] = new RobotomyRequestForm(target);
-	_drafts[2] = new PresidentialPardonForm(target);
+	_drafts[0] = new ShrubberyCreationForm();
+	_drafts[1] = new RobotomyRequestForm();
+	_drafts[2] = new PresidentialPardonForm();
 	_drafts[3] = nullptr;
 }
 
 Intern::~Intern() {
 	std::cout << "Intern: Destructor called\n";
 	for (int i = 0; i < 4;++i){
-		delete _drafts[i]
+		delete _drafts[i];
 	}
 }
 
@@ -46,7 +58,8 @@ AForm* Intern::makeForm(std::string form_name, std::string target){
 	AForm* pnt  = nullptr;
 	if (_drafts[i])
 	{
-		pnt  = _drafts[i].clone();
+		pnt = _drafts[i]->clone();
+		pnt->setTarget(target);
 		std::cout << "Intern creates " << form_name <<"\n";
 	}
 	else 

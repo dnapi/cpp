@@ -17,9 +17,6 @@
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
-
-//class Bureaucrait;
-
 class ShrubberyCreationForm: public AForm{
 	public:
 		ShrubberyCreationForm();

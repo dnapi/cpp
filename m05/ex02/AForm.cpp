@@ -13,7 +13,6 @@
 #include "AForm.hpp"
 
 AForm::AForm(): _name("AbraCadabra"), _is_signed(false), _grade_to_sign(1), _grade_to_exec(1) {
-	//std::cout << "AForm: Default constructor call for " << *this << "\n";
 	std::cout << "AForm: Constructor call with name=" <<_name 
 		<< " for grades " << _grade_to_sign << "&" << _grade_to_exec << "\n";
 }

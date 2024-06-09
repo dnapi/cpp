@@ -17,9 +17,6 @@
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
-
-//class Bureaucrait;
-
 class PresidentialPardonForm: public AForm{
 	public:
 		PresidentialPardonForm();
