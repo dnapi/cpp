@@ -12,7 +12,7 @@ INC = Bureaucrat.hpp AForm.hpp \
 	PresidentialPardonForm.hpp \
 	Intern.hpp
 OBJ = $(SRC:.cpp=.o)
-CC = c++
+CC = clang++
 
 all: $(NAME)
 
