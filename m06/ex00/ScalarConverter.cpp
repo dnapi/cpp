@@ -19,6 +19,57 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter & other){
 
 
 
+<<<<<<< Updated upstream
+=======
+void ScalarConverter::print(char c, int i, float f, double d){
+	printChar(c);
+	std::cout
+		<< "\nint: " << i
+		<< "\nfloat: " << f 
+		<< "\ndouble: " << d 
+		<< "\n";
+}
+>>>>>>> Stashed changes
+
+bool ScalarConverter::isPseudo(const std::string & str){
+	for (auto& s: {"nan", "nanf", "-inff", "+inff", "-inf", "+inf"})
+	{
+		if (str == s)
+			return true;
+		else
+			continue;
+	}
+	return false;
+}
+void ScalarConverter::doPseudo(const std::string & str){
+	std::cout << "char: impossible\n";
+	std::cout << "int: impossible\n";
+	if (str == "nanf")
+	{
+		float f = std::nan("");
+		double d = static_cast<double>(f);
+		d = f; //ok
+		f = d; //ko
+	}
+	if (str == "nanf")
+	{
+		float f = std::nan("");
+		double d = static_cast<double>f;
+	}
+	if (str == "nan" | str == "nanf")
+	{
+		float f = std::nan("");
+		double d = std::nan("");
+	}
+	else if (str == "+inf" | str == "+inff")
+	{
+		float f = std::numeric_limits<float>::infinity();
+		double d = std::numeric_limits<double>::infinity();
+	}
+	double neg_inf = -std::numeric_limits<double>::infinity();
+	toChar(str);
+	return true;
+}
 
 bool ScalarConverter::isChar(const std::string & str){
 	if (str.size() != 1)
