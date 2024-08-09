@@ -16,23 +16,9 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter & other){
 }
 
 /*
-void ScalarConverter::printChar(char c)
-{
-	std::cout << "char: ";
-	if (c)
-		std::cout << c;
-	else
-		std::cout << "Non displayable";
-}
 
-void ScalarConverter::print(char c, int i, float f, double d){
-	printChar(c); 
-	std::cout 
-		<< "\nint: " << i
-		<< "\nfloat: " << f 
-		<< "\ndouble: " << d 
-		<< "\n";
-}
+
+
 
 bool ScalarConverter::isChar(const std::string & str){
 	if (str.size() != 1)
@@ -96,7 +82,31 @@ void ScalarConverter::toInt(const std::string & str){
 
 */
 
+void ScalarConverter::print(char c, int i, float f, double d){
+	//printChar(c); 
+	std::cout << "char: " << c;
+	std::cout 
+		<< "\nint: " << i
+		<< "\nfloat: " << f 
+		<< "\ndouble: " << d 
+		<< "\n";
+}
+
+/*
+void ScalarConverter::printChar(char c)
+{
+	std::cout << "char: ";
+	if (c)
+		std::cout << c;
+	else
+		std::cout << "Non displayable";
+}*/
+
+
 Type ScalarConverter::getType(std::string str){
+	if (str.empty())
+		return emptyType;
+
 	if (str.size() == 1 && isalpha(str[0]))
 		return charType;
 
@@ -156,13 +166,15 @@ Type ScalarConverter::getType(std::string str){
 }
 
 void ScalarConverter::convert(const std::string str){
-	if (str.empty())
-	{
-		std::cout << "[ERROR] nothing to convert\n";
-		return ;
-	}
+	char c = 0;
+	int i = 0;
+	float f = 0;
+	double d = 0;
 	Type t = getType(str);
 	switch (t){
+		case emptyType:
+			std::cout << "[ERROR] nothing to convert\n";
+			return ;
 		case pseudoType:
 			std::cout << "pseudoType\n";
 			break;
@@ -174,13 +186,23 @@ void ScalarConverter::convert(const std::string str){
 			break;
 		case floatType:
 			std::cout << "floatType\n";
+			f = std::stof(str);
+			c = static_cast<char>(f);
+			i = static_cast<int>(f);
+			d = static_cast<double>(f);
+			print(c, i, f, d);
 			break;
 		case doubleType:
 			std::cout << "doubleType\n";
 			break;
 		case unknownType:
-			std::cout << "unknownType\n";
+			std::cout << "[ERROR] unknown type of the string\n";
+			return ;
 	}
+	(void)c;
+	(void)i;
+	(void)f;
+	(void)d;
 	return ;
 /*	if (isChar(str))
 		return ;

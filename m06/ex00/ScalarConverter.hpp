@@ -5,7 +5,7 @@
 #include <string>
 #include <cmath>
 
-enum Type {pseudoType, charType, intType,  floatType,  doubleType, unknownType};
+enum Type {emptyType, pseudoType, charType, intType,  floatType,  doubleType, unknownType};
 
 class ScalarConverter{
 	public:
