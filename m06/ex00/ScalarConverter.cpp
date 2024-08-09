@@ -138,7 +138,7 @@ void ScalarConverter::print(std::string& str, char c, int i, float f, double d){
 	else
 		std::cout << "int: " << i << "\n";
 	std::cout 
-		<< "float: " << f << "\n"
+		<< "float: " << f << "f\n"
 		<< "double: " << d << "\n";
 }
 
