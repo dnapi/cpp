@@ -3,7 +3,7 @@
 
 class Data{
 	public:
-		int data:
+		int data;
 		Data();
 		Data(int);
 		~Data();
