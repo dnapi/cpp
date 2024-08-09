@@ -85,11 +85,6 @@ Type ScalarConverter::getType(std::string str){
 	(void)f;
 	(void)d;
 
-/*	if (str == "nan" || str == "nanf" ||
-		str == "+inff" || str == "-inff" ||
-		str == "+inf" || str == "-inf")
-		return pseudoType; */
-
 	return unknownType;
 }
 
@@ -123,10 +118,6 @@ void ScalarConverter::castFrom(Type t, std::string& str, char& c, int& i, float&
 			i = static_cast<int>(d);
 			f = static_cast<float>(d);
 			break;
-/*		case pseudoType:
-			std::cout << "pseudoType\n";
-			setPseudoValues(str, c, i, f, d);
-			break; */
 		case emptyType:
 			return ;
 		case unknownType:
@@ -158,43 +149,3 @@ bool ScalarConverter::isPseudo(std::string& str){
 		return true;
 	return false;
 }
-
-/*
-void ScalarConverter::setPseudoValues(std::string& str, char& c, int& i, float& f, double& d){
-	if (str == "nan")
-	{
-		d = std::nan("");
-		f = static_cast<float>(d);
-	}
-	else if (str == "nanf")
-	{
-		f = std::nan("");
-		d = static_cast<double>(f);
-	}
-	else  if (str == "+inf")
-	{
-		d = std::numeric_limits<double>::infinity();
-		f = static_cast<float>(d);
-	}
-	else  if (str == "-inf")
-	{
-		d = -std::numeric_limits<double>::infinity();
-		f = static_cast<float>(d);
-	}
-	else  if (str == "+inff")
-	{
-		f = std::numeric_limits<float>::infinity();
-		d = static_cast<double>(f);
-	}
-	else  if (str == "-inff")
-	{
-		f = -std::numeric_limits<float>::infinity();
-		d = static_cast<double>(f);
-	}
-	(void)c;
-	(void)i;
-	(void)f;
-	(void)d;
-}
-*/
-

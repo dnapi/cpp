@@ -5,7 +5,7 @@
 #include <string>
 #include <cmath>
 
-enum Type {emptyType, charType, intType,  floatType,  doubleType, unknownType}; //,pseudoType
+enum Type {emptyType, charType, intType,  floatType,  doubleType, unknownType}; 
 
 class ScalarConverter{
 	public:
@@ -21,13 +21,6 @@ class ScalarConverter{
 		static void setPseudoValues(std::string&, char&, int&, float&, double&);
 		static bool isPseudo(std::string&);
 		static void print(std::string&, char, int, float, double);
-
-
-		static void printChar(char);
-		static bool isChar(const std::string&);
-		static void toChar(const std::string&);
-		static bool isInt(const std::string&);
-		static void toInt(const std::string&);
 };
 
 #endif
