@@ -15,6 +15,7 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter & other){
 	return *this;
 }
 
+/*
 void ScalarConverter::printChar(char c)
 {
 	std::cout << "char: ";
@@ -93,16 +94,99 @@ void ScalarConverter::toInt(const std::string & str){
 	print(c, i, f, d);
 }
 
+*/
+
+Type ScalarConverter::getType(std::string str){
+	if (str.size() == 1 && isalpha(str[0]))
+		return charType;
+
+	if (str == "nan" || str == "nanf" || 
+		str == "+inff" || str == "-inff" ||
+		str == "+inf" || str == "-inf")
+		return pseudoType;
+
+	size_t pos = 0;
+	int flag = 0;
+	int i = 0;
+	try {
+		i = std::stoi(str, &pos);
+	}
+	catch (const std::invalid_argument& e) {
+		flag = 1;
+	}
+	catch (const std::out_of_range& e) {
+		flag = 2;
+    }
+	if (pos == str.size())
+		return intType;
+
+	flag = 0;
+	float f = 0;
+	try {
+		f = std::stof(str, &pos);
+	}
+	catch (const std::invalid_argument& e) {
+		flag = 1;
+	}
+	catch (const std::out_of_range& e) {
+		flag = 2;
+    }
+	if (str.back() == 'f' && pos + 1 == str.size())
+		return floatType;
+
+	flag = 0;
+	double d = 0;
+	try {
+		d = std::stod(str, &pos);
+	}
+	catch (const std::invalid_argument& e) {
+		flag = 1;
+	}
+	catch (const std::out_of_range& e) {
+		flag = 2;
+    }
+	if (pos == str.size())
+		return doubleType;
+	
+	(void)flag;
+	(void)i;
+	(void)f;
+	(void)d;
+	return unknownType;
+}
+
 void ScalarConverter::convert(const std::string str){
 	if (str.empty())
 	{
 		std::cout << "[ERROR] nothing to convert\n";
 		return ;
 	}
-	if (isChar(str))
+	Type t = getType(str);
+	switch (t){
+		case pseudoType:
+			std::cout << "pseudoType\n";
+			break;
+		case charType:
+			std::cout << "charType\n";
+			break;
+		case intType:
+			std::cout << "intType\n";
+			break;
+		case floatType:
+			std::cout << "floatType\n";
+			break;
+		case doubleType:
+			std::cout << "doubleType\n";
+			break;
+		case unknownType:
+			std::cout << "unknownType\n";
+	}
+	return ;
+/*	if (isChar(str))
 		return ;
 	if (isInt(str))
 		return ;
+	*/
 	size_t pos = 0;
 	try {
 		double num = std::stod(str, &pos);

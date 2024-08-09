@@ -5,9 +5,12 @@
 #include <string>
 #include <cmath>
 
+enum Type {pseudoType, charType, intType,  floatType,  doubleType, unknownType};
+
 class ScalarConverter{
 	public:
 		static void convert(std::string);
+		static Type getType(std::string);
 	private:
 		ScalarConverter();
 		~ScalarConverter();
