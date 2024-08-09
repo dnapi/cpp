@@ -1,6 +1,6 @@
 NAME = serialize
 
-SRC = main.cpp Serializer.cpp main.cpp Data.cpp
+SRC = main.cpp Serializer.cpp Data.cpp
 FLAGS = -Wall -Wextra -Werror -std=c++17
 INC = Serializer.hpp Data.hpp
 OBJ = $(SRC:.cpp=.o)
