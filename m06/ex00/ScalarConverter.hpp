@@ -5,18 +5,24 @@
 #include <string>
 #include <cmath>
 
-enum Type {emptyType, pseudoType, charType, intType,  floatType,  doubleType, unknownType};
+enum Type {emptyType, charType, intType,  floatType,  doubleType, unknownType}; //,pseudoType
 
 class ScalarConverter{
 	public:
 		static void convert(std::string);
-		static Type getType(std::string);
 	private:
 		ScalarConverter();
 		~ScalarConverter();
 		ScalarConverter(const ScalarConverter &);
 		ScalarConverter& operator=(const ScalarConverter &);
-		static void print(char, int, float, double);
+
+		static Type getType(std::string);
+		static void castFrom(Type, std::string&, char&, int&, float&, double&);
+		static void setPseudoValues(std::string&, char&, int&, float&, double&);
+		static bool isPseudo(std::string&);
+		static void print(std::string&, char, int, float, double);
+
+
 		static void printChar(char);
 		static bool isChar(const std::string&);
 		static void toChar(const std::string&);

@@ -1,4 +1,4 @@
-NAME = a.out
+NAME = convert
 
 SRC = main.cpp ScalarConverter.cpp
 FLAGS = -Wall -Wextra -Werror -std=c++17
