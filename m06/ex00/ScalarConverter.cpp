@@ -1,10 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScalarConverter.cpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/12 09:43:42 by apimikov          #+#    #+#             */
+/*   Updated: 2024/08/12 09:43:43 by apimikov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ScalarConverter.hpp"
 
-ScalarConverter::ScalarConverter(){
-}
+ScalarConverter::ScalarConverter(){}
 
-ScalarConverter::~ScalarConverter(){
-}
+ScalarConverter::~ScalarConverter(){}
 
 ScalarConverter::ScalarConverter(const ScalarConverter & other){
 	(void)other;
@@ -127,17 +137,18 @@ void ScalarConverter::castFrom(Type t, std::string& str, char& c, int& i, float&
 
 
 void ScalarConverter::print(std::string& str, char c, int i, float f, double d){
+	std::cout << std::fixed << std::setprecision(1);
 	if (isPseudo(str))
 		std::cout << "char: impossible\n";
 	else if (32 < c && c < 127)
 		std::cout << "char: " << c  << "\n";
-	else 
+	else
 		std::cout << "char: Non displayable\n";
 	if (isPseudo(str))
 		std::cout << "int: impossible\n";
 	else
 		std::cout << "int: " << i << "\n";
-	std::cout 
+	std::cout
 		<< "float: " << f << "f\n"
 		<< "double: " << d << "\n";
 }
@@ -145,7 +156,8 @@ void ScalarConverter::print(std::string& str, char c, int i, float f, double d){
 bool ScalarConverter::isPseudo(std::string& str){
 	if (str == "nan" || str == "nanf" ||
 		str == "+inff" || str == "-inff" ||
-		str == "+inf" || str == "-inf")
+		str == "+inf" || str == "-inf" ||
+		str == "inf" || str == "inff")
 		return true;
 	return false;
 }
