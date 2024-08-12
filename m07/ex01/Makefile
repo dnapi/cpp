@@ -1,8 +1,8 @@
-NAME = convert
+NAME = iter
 
-SRC = main.cpp ScalarConverter.cpp
+SRC = main.cpp
 FLAGS = -Wall -Wextra -Werror -std=c++17
-INC = ScalarConverter.hpp
+INC = iter.hpp
 OBJ = $(SRC:.cpp=.o)
 CC = c++
 
