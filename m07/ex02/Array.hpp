@@ -10,8 +10,9 @@ class Array{
 		Array(unsigned int);
 		~Array();
 		Array(const Array<T>&);
-		Array<T>& operator=(const Array<T>&);
-		T& operator[](int) const;
+		Array<T>& operator=(const Array<T>&) &;
+		const T& operator[](int) const;
+		T& operator[](int);
 		unsigned int size() const;
 	private:
 		T*	_array;

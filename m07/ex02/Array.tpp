@@ -1,14 +1,14 @@
 #include "Array.hpp"
 
 template<typename T>
-Array<T>::Array():_size(0){ // _array(nullptr) 
-	_array = new T[0];
-}
-Array<T>::Array() : _size(0), _array(nullptr) {}
+Array<T>::Array(): _array(nullptr), _size(0) {}
 
 template<typename T>
 Array<T>::Array(unsigned int i):_size(i){
-	_array = new T[_size];
+	if (i > 0)
+		_array = new T[_size];
+	else
+		_array = nullptr;
 }
 
 template<typename T>
@@ -19,10 +19,14 @@ Array<T>::~Array(){
 
 template<typename T>
 Array<T>::Array(const Array<T>& other):_size(other.size()){
-	_array = new T[_size];
-	for (unsigned int i = 0; i < _size; i++){
-		_array[i] = other[i];
+	if (_size > 0){
+		_array = new T[_size];
+		for (unsigned int i = 0; i < _size; i++){
+			_array[i] = other[i];
+		}
 	}
+	else 
+		_array = nullptr;
 }
 
 template<typename T>
@@ -31,10 +35,15 @@ Array<T>& Array<T>::operator=(const Array<T>& other) & {
 		return this;
 	delete[] _array;
 	_size = other.size();
-	_array = new T[_size];
-	for (unsigned int i = 0; i < _size; i++){
-		_array[i] = other[i];
+	if (_size > 0)
+	{
+		_array = new T[_size];
+		for (unsigned int i = 0; i < _size; i++){
+			_array[i] = other[i];
+		}
 	}
+	else 
+		_array = nullptr;
 	return *this;
 }
 
