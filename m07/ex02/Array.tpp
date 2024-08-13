@@ -26,7 +26,7 @@ Array<T>::Array(const Array<T>& other):_size(other.size()){
 }
 
 template<typename T>
-Array<T>& Array<T>::operator=(const Array<T>& other){
+Array<T>& Array<T>::operator=(const Array<T>& other) & {
 	if (this == *other)
 		return this;
 	delete[] _array;
@@ -39,7 +39,16 @@ Array<T>& Array<T>::operator=(const Array<T>& other){
 }
 
 template<typename T>
-T& Array<T>::operator[](int i) const{
+T& Array<T>::operator[](int i){
+	if (i < 0)
+		throw std::exception();
+	if (_size <= static_cast<unsigned int>(i))
+		throw std::exception();
+	return _array[i];
+}
+
+template<typename T>
+const T& Array<T>::operator[](int i) const{
 	if (i < 0)
 		throw std::exception();
 	if (_size <= static_cast<unsigned int>(i))
