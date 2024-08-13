@@ -1,8 +1,8 @@
-NAME = iter
+NAME = array
 
 SRC = main.cpp
 FLAGS = -Wall -Wextra -Werror -std=c++17
-INC = iter.hpp
+INC = Array.hpp Array.tpp
 OBJ = $(SRC:.cpp=.o)
 CC = c++
 

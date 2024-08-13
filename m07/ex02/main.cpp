@@ -1,5 +1,5 @@
 #include <iostream>
-#include <Array.hpp>
+#include "Array.hpp"
 
 #define MAX_VAL 750
 int main(int, char**)
@@ -19,6 +19,8 @@ int main(int, char**)
         Array<int> test(tmp);
     }
 
+    Array<int> tmp = numbers;
+    Array<int> test(tmp);
     for (int i = 0; i < MAX_VAL; i++)
     {
         if (mirror[i] != numbers[i])
@@ -26,14 +28,25 @@ int main(int, char**)
             std::cerr << "didn't save the same value!!" << std::endl;
             return 1;
         }
+        if (mirror[i] != test[i])
+        {
+            std::cerr << "didn't save the same value in 'test' array" << std::endl;
+            return 1;
+        }
+        if (mirror[i] != tmp[i])
+        {
+            std::cerr << "didn't save the same value in 'tmp' array" << std::endl;
+            return 1;
+        }
     }
+    std::cout << "size=" << test.size() << '\n';
     try
     {
         numbers[-2] = 0;
     }
     catch(const std::exception& e)
     {
-        std::cerr << e.what() << '\n';
+        std::cerr << e.what() << " for index -2\n";
     }
     try
     {
@@ -41,7 +54,7 @@ int main(int, char**)
     }
     catch(const std::exception& e)
     {
-        std::cerr << e.what() << '\n';
+        std::cerr << e.what() << " for index=size\n";
     }
 
     for (int i = 0; i < MAX_VAL; i++)
