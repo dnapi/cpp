@@ -1,3 +1,6 @@
+#ifndef ARRAY_TPP
+#define ARRAY_TPP
+
 #include "Array.hpp"
 
 template<typename T>
@@ -32,7 +35,7 @@ Array<T>::Array(const Array<T>& other):_size(other.size()){
 template<typename T>
 Array<T>& Array<T>::operator=(const Array<T>& other) & {
 	if (this == *other)
-		return this;
+		return *this;
 	delete[] _array;
 	_size = other.size();
 	if (_size > 0)
@@ -69,3 +72,5 @@ template<typename T>
 unsigned int Array<T>::size() const {
 	return _size;
 }
+
+#endif
