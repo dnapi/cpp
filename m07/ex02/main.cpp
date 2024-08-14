@@ -4,6 +4,8 @@
 #define MAX_VAL 750
 int main(int, char**)
 {
+    Array<int> zero;
+    std::cout << "zero.size()=" << zero.size() << '\n';
     Array<int> numbers(MAX_VAL);
     int* mirror = new int[MAX_VAL];
     srand(time(NULL));
@@ -46,7 +48,7 @@ int main(int, char**)
     }
     catch(const std::exception& e)
     {
-        std::cerr << e.what() << " for index -2\n";
+        std::cerr << e.what() << " for index= -2\n";
     }
     try
     {
@@ -54,7 +56,7 @@ int main(int, char**)
     }
     catch(const std::exception& e)
     {
-        std::cerr << e.what() << " for index=size\n";
+        std::cerr << e.what() << " for index= " << MAX_VAL << "\n";
     }
 
     for (int i = 0; i < MAX_VAL; i++)
