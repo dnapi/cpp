@@ -18,7 +18,7 @@ int main() {
     } catch (const std::exception& e) {
         std::cerr << e.what() << std::endl; 
     }
-    /*
+    
     std::vector<long> l = {1, 2, 3, 4, 5};
     try {
         std::vector<long>::iterator it = easyfind(l, 3);
@@ -26,5 +26,4 @@ int main() {
     } catch (const std::exception& e) {
         std::cerr << e.what() << std::endl; 
     }
-    */
-}
+ }
