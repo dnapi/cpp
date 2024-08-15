@@ -34,7 +34,35 @@ Array<T>::Array(const Array<T>& other):_size(other.size()){
 
 template<typename T>
 Array<T>& Array<T>::operator=(const Array<T>& other) & {
-	if (this == *other)
+	if (this == &other)
+		return *this;
+	unsigned int size = other.size();
+	if (!size){
+		delete[] _array;
+		_array = nullptr;
+		_size = 0;
+		return *this;
+	}
+	T* tmp = new T[size];
+	try {
+		for (unsigned int i = 0; i < size; i++){
+			tmp[i] = other[i];
+		}
+	}
+	catch (...){
+		delete[] tmp;
+		throw;
+	}
+	delete[] _array;
+	_array = tmp;
+	_size = size;
+	return *tmp;
+}
+
+/*  //this solution is not save
+template<typename T>
+Array<T>& Array<T>::operator=(const Array<T>& other) & {
+	if (this == &other)
 		return *this;
 	delete[] _array;
 	_size = other.size();
@@ -49,6 +77,7 @@ Array<T>& Array<T>::operator=(const Array<T>& other) & {
 		_array = nullptr;
 	return *this;
 }
+*/
 
 template<typename T>
 T& Array<T>::operator[](int i){
