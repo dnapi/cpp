@@ -1,8 +1,8 @@
-NAME = array
+NAME = span
 
-SRC = main.cpp
+SRC = main.cpp Span.cpp
 FLAGS = -Wall -Wextra -Werror -std=c++17
-INC = Array.hpp Array.tpp
+INC = Span.hpp
 OBJ = $(SRC:.cpp=.o)
 CC = c++
 
