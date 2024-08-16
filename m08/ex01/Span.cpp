@@ -2,6 +2,7 @@
 #include <vector>
 #include <algorithm>
 #include <limits>
+#include <iostream>
 #include "Span.hpp"
 
 Span::Span():_size(0),_capacity(0){};
@@ -10,20 +11,22 @@ Span::Span(unsigned int c):_size(0),_capacity(c){
     //_vec = std::vector<int>(_capacity);
 }
 
-void Span::addNumber(int number){
+void Span::addNumber(const int number){
     if (_size == _capacity)
         throw std::exception();
     _vec.push_back(number);
     _size++;
 }
 
-void addNumber(iter_vec begin, iter_vec end){
-    iter_vec it = begin;
-    std::vector<int> vec(20);
-    for (it = begin; it != end;++it){
+/*
+void Span::addNumber(iter_vec  begin, iter_vec end){
+    //iter_vec it = begin;
+    //std::vector<int> vec(20);
+    for (iter_vec it = begin; it != end;++it){
         addNumber(*it);
     }
 }
+*/
 
 /*
 template <typename T>
@@ -47,7 +50,7 @@ template <typename T>
 }
 */
 
-unsigned int Span::shortestSpan(){
+unsigned int Span::shortestSpan() const {
     if (_size < 2)
         throw std::exception();
     // for (std::vector<int>::iterator it = _vec.begin(); it != _vec.end();++it){
@@ -70,7 +73,7 @@ unsigned int Span::shortestSpan(){
     return min;
 }
 
-unsigned int Span::longestSpan(){
+unsigned int Span::longestSpan() const {
     if (_size < 2)
         throw std::exception();
     auto minMaxPair = std::minmax_element(_vec.begin(), _vec.end());
@@ -80,4 +83,11 @@ unsigned int Span::longestSpan(){
 
 unsigned int Span::_diff(int a, int b){
     return static_cast<unsigned int>(a > b ? a - b : b - a);
+}
+
+void Span::print() const{
+    for (auto& r: _vec){
+        std::cout << r << " ";
+    }
+    std::cout << "\n";
 }
