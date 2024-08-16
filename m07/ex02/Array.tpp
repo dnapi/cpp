@@ -6,7 +6,7 @@
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 16:40:27 by apimikov          #+#    #+#             */
-/*   Updated: 2024/08/15 16:40:29 by apimikov         ###   ########.fr       */
+/*   Updated: 2024/08/16 09:52:51 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ Array<T>& Array<T>::operator=(const Array<T>& other) & {
 	delete[] _array;
 	_array = tmp;
 	_size = size;
-	return *tmp;
+	return *this;
 }
 
 /*  //this solution is not save

@@ -10,7 +10,7 @@ Span::Span(unsigned int c):_size(0),_capacity(c){
     //_vec = std::vector<int>(_capacity);
 }
 
-void Span::addNumber(unsigned int number){
+void Span::addNumber(int number){
     if (_size == _capacity)
         throw std::exception();
     _vec.push_back(number);
@@ -44,10 +44,10 @@ unsigned int Span::longestSpan(){
     if (_size < 2)
         throw std::exception();
     auto minMaxPair = std::minmax_element(_vec.begin(), _vec.end());
-    std::cout << "max=" << *(minMaxPair.second) << "  min=" << *(minMaxPair.first);
+  //  std::cout << "max=" << *(minMaxPair.second) << "  min=" << *(minMaxPair.first);
     return _diff(*minMaxPair.second, *minMaxPair.first);
 }
 
-unsigned int Span::_diff(unsigned int a, unsigned int b){
-    return a > b ? a - b : b - a;
+unsigned int Span::_diff(int a, int b){
+    return static_cast<unsigned int>(a > b ? a - b : b - a);
 }
