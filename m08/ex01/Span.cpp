@@ -18,54 +18,20 @@ void Span::addNumber(const int number){
     _size++;
 }
 
-/*
-void Span::addNumber(iter_vec  begin, iter_vec end){
-    //iter_vec it = begin;
-    //std::vector<int> vec(20);
-    for (iter_vec it = begin; it != end;++it){
-        addNumber(*it);
-    }
-}
-*/
-
-/*
-template <typename T>
-    void addNumber(typename T::const_iterator begin, typename T::const_iterator end){
-    //iter_vec it = begin;
-    //std::vector<int> vec(20);
-    //it = vec.begin();
-    for (auto& it = begin; it != end;++it){
-        addNumber(*it);
-    }
-}
-
-template <typename T>
-    void addNumber(typename T::iterator begin, typename T::iterator end){
-    //iter_vec it = begin;
-    //std::vector<int> vec(20);
-    //it = vec.begin();
-    for (auto& it = begin; it != end;++it){
-        addNumber(*it);
-    }
-}
-*/
-
 unsigned int Span::shortestSpan() const {
     if (_size < 2)
         throw std::exception();
-    // for (std::vector<int>::iterator it = _vec.begin(); it != _vec.end();++it){
-    //     std::cout << "current=" << *it << "\n";
-    // }
     unsigned int min = _diff(_vec[0],_vec[1]);
+    //std::cout << "min=" << min << "\n";
     std::vector<int> tmp = _vec;
-    std::sort(tmp.begin(), tmp.end());
     unsigned int previous = _vec[0];
     unsigned int current = previous;
     unsigned int diff;
-    for (std::vector<int>::iterator it = tmp.begin(); it != tmp.end();++it){
+    for (std::vector<int>::iterator it = tmp.begin() + 1; it != tmp.end();++it){
         current = *it;
-    //    std::cout << "current=" << current << "\n";
+     //   std::cout << "current=" << current << "\n";
         diff = _diff(previous, current);
+      //  std::cout << "diff=" << diff << "\n";
         if (min > diff)
             min = diff;
         previous = current;

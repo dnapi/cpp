@@ -13,21 +13,11 @@ public:
     void addNumber(const int);
     //void addNumber(iter_vec, iter_vec);
     template <typename T>
-    void addNumber(T begin, T end){
+    void addList(T begin, T end){
         for (auto it = begin; it != end;++it){
-        addNumber(*it);
-        }
-    }
-    /*
-    template <typename InputIterator>
-    void addNumber(InputIterator begin, InputIterator end) {
-        static_assert(std::is_base_of<std::input_iterator_tag, typename std::iterator_traits<InputIterator>::iterator_category>::value, 
-                      "InputIterator must be an input iterator.");
-        for (auto it = begin; it != end; ++it) {
             addNumber(*it);
         }
     }
-    */
     unsigned int shortestSpan() const;
     unsigned int longestSpan() const;
     void print() const;
