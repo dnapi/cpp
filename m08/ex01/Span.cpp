@@ -24,7 +24,8 @@ unsigned int Span::shortestSpan() const {
     unsigned int min = _diff(_vec[0],_vec[1]);
     //std::cout << "min=" << min << "\n";
     std::vector<int> tmp = _vec;
-    unsigned int previous = _vec[0];
+    std::sort(tmp.begin(), tmp.end());
+    unsigned int previous = tmp[0];
     unsigned int current = previous;
     unsigned int diff;
     for (std::vector<int>::iterator it = tmp.begin() + 1; it != tmp.end();++it){
