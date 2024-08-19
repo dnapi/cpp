@@ -6,7 +6,7 @@
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 13:00:56 by apimikov          #+#    #+#             */
-/*   Updated: 2024/08/19 13:02:23 by apimikov         ###   ########.fr       */
+/*   Updated: 2024/08/19 13:43:21 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@
 
 Span::Span():_size(0),_capacity(0){};
 
-Span::Span(unsigned int c):_size(0),_capacity(c){
-    //_vec = std::vector<int>(_capacity);
-}
+Span::Span(unsigned int c):_size(0),_capacity(c){}
 
 void Span::addNumber(const int number){
     if (_size == _capacity)
@@ -53,7 +51,6 @@ unsigned int Span::longestSpan() const {
     if (_size < 2)
         throw std::exception();
     auto minMaxPair = std::minmax_element(_vec.begin(), _vec.end());
-  //  std::cout << "max=" << *(minMaxPair.second) << "  min=" << *(minMaxPair.first);
     return _diff(*minMaxPair.second, *minMaxPair.first);
 }
 

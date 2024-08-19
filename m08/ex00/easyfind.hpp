@@ -6,7 +6,7 @@
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 10:29:41 by apimikov          #+#    #+#             */
-/*   Updated: 2024/08/16 11:29:40 by apimikov         ###   ########.fr       */
+/*   Updated: 2024/08/19 13:32:18 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,5 @@ typename T::iterator easyfind(T& t, int i){
         throw std::exception();
     return it;
 }
-
-// not there is no need to check type. 
-//typename T::const_iterator it = t.begin();
-	//if (typeid(*it) != typeid(int))
-	//	throw std::exception();
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 09:41:41 by apimikov          #+#    #+#             */
-/*   Updated: 2024/08/19 12:21:40 by apimikov         ###   ########.fr       */
+/*   Updated: 2024/08/19 13:39:13 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,6 @@ public:
 	const_iterator	cend(void) const{
 		return this->c.cend();
 	}
-	reverse_iterator	rbegin(void){
-		return this->c.rbegin();
-	}
-	reverse_iterator	rend(void) const{
-		return this->c.rend();
-	}
-
 private:
     MutantStack(const MutantStack &) = default;
     MutantStack& operator=(const MutantStack&) = default;
