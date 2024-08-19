@@ -1,8 +1,8 @@
-NAME = array
+NAME = mutant
 
 SRC = main.cpp
 FLAGS = -Wall -Wextra -Werror -std=c++17
-INC = Array.hpp Array.tpp
+INC = MutantStack.hpp
 OBJ = $(SRC:.cpp=.o)
 CC = c++
 

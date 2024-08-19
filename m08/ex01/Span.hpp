@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Span.hpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/19 13:01:11 by apimikov          #+#    #+#             */
+/*   Updated: 2024/08/19 13:01:13 by apimikov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SPAN_HPP
 #define SPAN_HPP
 
@@ -11,7 +23,6 @@ public:
     Span();
     ~Span() = default;
     void addNumber(const int);
-    //void addNumber(iter_vec, iter_vec);
     template <typename T>
     void addList(T begin, T end){
         for (auto it = begin; it != end;++it){

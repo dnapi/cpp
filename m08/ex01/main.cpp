@@ -54,9 +54,9 @@ int main()
     std::cout << sp2.shortestSpan() << std::endl;
     std::cout << sp2.longestSpan() << std::endl;
 
-    Span span_big = Span(200'000);
+    Span span_big = Span(2'000'000);
 
-    std::vector<int> vect = generateRandomIntVector(100'000, -1000000, 1000000);
+    std::vector<int> vect = generateRandomIntVector(2'000'000, std::numeric_limits<int>::min(),std::numeric_limits<int>::max());
     span_big.addList(vect.begin(), vect.end());
     //span_big.print();
     std::cout << span_big.shortestSpan() << std::endl;

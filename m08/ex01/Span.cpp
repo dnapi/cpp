@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Span.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/19 13:00:56 by apimikov          #+#    #+#             */
+/*   Updated: 2024/08/19 13:02:23 by apimikov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -22,7 +34,6 @@ unsigned int Span::shortestSpan() const {
     if (_size < 2)
         throw std::exception();
     unsigned int min = _diff(_vec[0],_vec[1]);
-    //std::cout << "min=" << min << "\n";
     std::vector<int> tmp = _vec;
     std::sort(tmp.begin(), tmp.end());
     unsigned int previous = tmp[0];
@@ -30,9 +41,7 @@ unsigned int Span::shortestSpan() const {
     unsigned int diff;
     for (std::vector<int>::iterator it = tmp.begin() + 1; it != tmp.end();++it){
         current = *it;
-     //   std::cout << "current=" << current << "\n";
         diff = _diff(previous, current);
-      //  std::cout << "diff=" << diff << "\n";
         if (min > diff)
             min = diff;
         previous = current;
