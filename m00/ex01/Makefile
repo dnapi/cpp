@@ -3,7 +3,7 @@ NAME = awesomebook
 
 SRC = main.cpp Contact.cpp PhoneBook.cpp
 
-FLAGS = -Wall -Wextra -Werror #-std=c++11
+FLAGS = -Wall -Wextra -Werror -std=c++17
 OBJ = $(SRC:.cpp=.o)
 CC = c++
 
