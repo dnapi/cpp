@@ -1,8 +1,8 @@
-NAME = mutant
+NAME = RPN
 
-SRC = main.cpp
+SRC = main.cpp RPN.cpp
 FLAGS = -Wall -Wextra -Werror -std=c++17
-INC = MutantStack.hpp
+INC = RPN.hpp
 OBJ = $(SRC:.cpp=.o)
 CC = c++
 

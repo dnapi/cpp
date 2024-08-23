@@ -6,7 +6,7 @@
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 10:26:42 by apimikov          #+#    #+#             */
-/*   Updated: 2024/08/22 16:54:02 by apimikov         ###   ########.fr       */
+/*   Updated: 2024/08/23 09:06:15 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int main(int argc, char** argv){
         std::cout << "Please provide one file name as an argument\n";
         return (1);
     }
-    (void)argv;
     /*
     std::string filename = argv[1];
     size_t position_ext = std::string(filename).rfind('.');
