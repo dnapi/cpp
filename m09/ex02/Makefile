@@ -1,8 +1,8 @@
-NAME = mutant
+NAME = PmergeMe
 
 SRC = main.cpp
 FLAGS = -Wall -Wextra -Werror -std=c++17
-INC = MutantStack.hpp
+INC = PmergeMe.hpp
 OBJ = $(SRC:.cpp=.o)
 CC = c++
 
