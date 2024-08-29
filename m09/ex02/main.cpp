@@ -6,7 +6,7 @@
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 09:05:24 by apimikov          #+#    #+#             */
-/*   Updated: 2024/08/27 11:06:16 by apimikov         ###   ########.fr       */
+/*   Updated: 2024/08/29 11:33:33 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,25 +27,17 @@ int main(int argc, char** argv){
         std::cerr << "Error. \n";
         return (1);
     }
-    for (auto& i : vec){
-        std::cout << i << ' ';
-    }
-    std::cout << '\n';
-
     PmergeMe srt;
     srt.makeTwoVectors(vec);
     srt.makeMainChainVector();
-    std::cout << "a vector:";
-    for (auto& i : srt.a){
-        std::cout << i << ' ';
-    }
-    std::cout << '\n';
-    std::cout << "b vector:";
-    for (auto& i : srt.b){
-        std::cout << i << ' ';
-    }
-    std::cout << '\n';
+    vector_t original_vec = vec;
+    vector_t indexes = srt.sortVector(vec, vec.size());
 
+    std::cout << "The indexes:";
+    for (auto& i : indexes){
+        std::cout << i << ' ';
+    }
+    std::cout << '\n';
     
     return 0;
 }
