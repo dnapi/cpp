@@ -23,6 +23,7 @@ public:
 private:
     bool less(unsigned int a, unsigned int b);
     void printVector(vector_t& v, size_t len = 10);
+    void insert(vector_t& v, vector_t& small, vector_t& rank);
     void binaryInsertionVector(vector_t& v, vector_t& indexes, size_t mid_point);
     PmergeMe(const PmergeMe&) = default;
     PmergeMe& operator=(const PmergeMe&) = default;
