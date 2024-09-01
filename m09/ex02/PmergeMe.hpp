@@ -5,7 +5,7 @@
 #include <deque>
 
 using vector_t = std::vector<unsigned int>;
-//using vector_it = std::vector<unsigned int>::iterator;
+using vector_it = std::vector<unsigned int>::iterator;
 
 class PmergeMe{
 public:

@@ -57,9 +57,26 @@ vector_t PmergeMe::sortVector(vector_t& v, size_t len){
     return indexes;
 }
 
+
 void PmergeMe::insert(vector_t& v, vector_t& small, vector_t& rank){
     v.insert(v.begin(), small[rank[0]]);
 }
+
+/*
+size_t PmergeMe::insertPosition(vector_t& v, size_t begin, size_t end, unsigned int value){
+    if (begin == end)
+        return begin;
+    size_t mid_point = begin + (end - begin) / 2;
+    if (value < v[mid_point])
+*/
+/*
+    unsigned int b_0 = v[mid_point
+    v.erase(v.begin() + mid_point);
+    v.insert(v.begin(), b_0);
+    b_0 = indexes[mid_point];
+    indexes.erase(indexes.begin() + mid_point);
+    indexes.insert(indexes.begin(), b_0);
+*/
 
 
 void PmergeMe::binaryInsertionVector(vector_t& v, vector_t& indexes, size_t mid_point){
