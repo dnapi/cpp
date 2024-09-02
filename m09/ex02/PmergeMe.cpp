@@ -25,7 +25,8 @@ void PmergeMe::makeMainChainVector(){
 }
 
 
-vector_t PmergeMe::sortVector(vector_t& v, size_t len){
+vector_t PmergeMe::sortVector(vector_t& v){
+    size_t len = v.size();
     if (2 > len){
         vector_t indexes{0, 1};
         return indexes;
@@ -49,16 +50,24 @@ vector_t PmergeMe::sortVector(vector_t& v, size_t len){
     printVector(small);
     (void)small;
     printVector(v);
-    vector_t rank = sortVector(v, mid_point);
+    vector_t rank = sortVector(v);
     printVector(v);
-    insert(v, small, rank);
+    vector_t indexes_ranked(indexes.size());
+    vector_t small_ranked(small.size());
+    indexes_ranked.back() = indexes.back();
+    for (size_t i = 0; i < mid_point; ++i){
+        small_ranked[i] = small[rank[i]];
+        indexes_ranked[i] = indexes[rank[i]];
+        indexes_ranked[i + mid_point] = indexes[rank[i] + mid_point];
+    }
+    insert(v, small_ranked, indexes_ranked);
     //binaryInsertionVector(v, indexes, mid_point);
     printVector(v);
     return indexes;
 }
 
 
-void PmergeMe::insert(vector_t& v, vector_t& small, vector_t& rank){
+void PmergeMe::insert(vector_t& v, vector_t& small, vector_t& indexes, vector_t& rank){
     v.insert(v.begin(), small[rank[0]]);
 }
 
@@ -85,7 +94,7 @@ void PmergeMe::binaryInsertionVector(vector_t& v, vector_t& indexes, size_t mid_
     v.insert(v.begin(), b_0);
     b_0 = indexes[mid_point];
     indexes.erase(indexes.begin() + mid_point);
-    indexes.insert(indexes.begin(), b_0);
+    //indexes.insert(indexes.begin(), b_0);
 }
 
 

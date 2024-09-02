@@ -16,14 +16,14 @@ public:
     //std::deque<unsigned int> data_deq;
     //std::deque<unsigned int> data_deq;
     PmergeMe();
-    vector_t sortVector(vector_t& v, size_t len);
+    vector_t sortVector(vector_t& v);
     void makeTwoVectors(vector_t& vec);
     void makeMainChainVector();
     ~PmergeMe() = default;
 private:
     bool less(unsigned int a, unsigned int b);
     void printVector(vector_t& v, size_t len = 10);
-    void insert(vector_t& v, vector_t& small, vector_t& rank);
+    void insert(vector_t& main, vector_t& small, vector_t& indexes);
     void binaryInsertionVector(vector_t& v, vector_t& indexes, size_t mid_point);
     PmergeMe(const PmergeMe&) = default;
     PmergeMe& operator=(const PmergeMe&) = default;
