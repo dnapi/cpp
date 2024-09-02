@@ -6,7 +6,7 @@
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 09:05:24 by apimikov          #+#    #+#             */
-/*   Updated: 2024/08/29 11:33:33 by apimikov         ###   ########.fr       */
+/*   Updated: 2024/09/02 09:48:37 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,12 @@ int main(int argc, char** argv){
     srt.makeTwoVectors(vec);
     srt.makeMainChainVector();
     vector_t original_vec = vec;
-    vector_t indexes = srt.sortVector(vec, vec.size());
+    matrix_t m(vec.size());
+    for (size_t i = 0; i < vec.size();++i){
+        m[i].push_back(vec[i]);
+        m[i].push_back(i);
+    }
+    vector_t indexes = srt.sort(m);
 
     std::cout << "The indexes:";
     for (auto& i : indexes){
