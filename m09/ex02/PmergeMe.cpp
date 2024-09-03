@@ -25,127 +25,104 @@ void PmergeMe::makeMainChainVector(){
 }
 
 vector_t PmergeMe::sort(matrix_t& m){
-    std::cout << "-------  Iteration " << number_iterations++ << "------\n";
+    size_t current_iteration = number_iterations;
+    std::cout << "-------  Iteration " << current_iteration << "------\n";
+    number_iterations++;
     size_t len = m.size();
     if (2 > len){
         vector_t indexes{0, 1};
         return indexes;
     }
-    vector_t indexes(len + 1);
     for (size_t i = 0; i < len; ++i){
-        //m[i].push_back(i);
-        indexes[i] = i;
+        m[i].push_back(i);
     }
     size_t mid_point = len / 2;
     size_t rest_element = len % 2;
     (void)rest_element;
     for (size_t i = 0; i < mid_point; ++i){
-        if (!less(m[i][0], m[i + mid_point][0]))
-            continue;
-        std::swap(m[i], m[i + mid_point]);
-        std::swap(indexes[i], indexes[i + mid_point]);
+        if (less(m[i][0], m[i + mid_point][0]))
+            std::swap(m[i], m[i + mid_point]);
     }
     matrix_t small(m.begin() + mid_point, m.end());
     m.erase(m.begin() + mid_point, m.end());
-    {
+    if (0){
         std::cout << "small: \n";
         printMatrix(small);
         std::cout << "main: \n";
         printMatrix(m);
     }
-    vector_t rank = sort(m);
-    std::cout << "main after recursive sort: \n";
+    vector_t rank_next = sort(m);
+    std::cout << "-------  Iteration " << current_iteration << " after sort------\n";
     printMatrix(m);
-    /*
-    vector_t indexes_ranked(indexes.size());
-    vector_pair small_ranked(small.size());
-    indexes_ranked.back() = indexes.back();
-    for (size_t i = 0; i < mid_point; ++i){
-        small_ranked[i] = small[rank[i]];
-        indexes_ranked[i] = indexes[rank[i]];
-        indexes_ranked[i + mid_point] = indexes[rank[i] + mid_point];
+    std::cout << "-------  Iteration " << current_iteration << " after print------\n";
+    insert(m, small, rank_next);
+    std::cout << "-------  Iteration " << current_iteration << " after insert------\n";
+    // matrix_t small_ranked(small.size());
+    // for (size_t i = 0; i < mid_point; ++i){
+    //     small_ranked[i] = small[rank_next[i]];
+    // }
+    vector_t rank(m.size() + 1);
+    rank.back() = len;
+    for (size_t i = 0; i < m.size(); ++i){
+        rank[i] = m[i].back();
+        m[i].pop_back();
     }
-    insert(v, small_ranked, indexes_ranked);
-    //binaryInsertionVector(v, indexes, mid_point);
-    */
-    return indexes;
+    std::cout << "-------  Iteration " << current_iteration << " before return------\n";
+    return rank;
 }
 
-/*
-vector_t PmergeMe::sortVector(vector_t& v){
-    size_t len = v.size();
-    if (2 > len){
-        vector_t indexes{0, 1};
-        return indexes;
+void PmergeMe::insert(matrix_t& main, matrix_t& small, vector_t& rank){
+    main.insert(main.begin(), small[rank[0]]);
+    size_t k = 2;
+    size_t t_k = 3;
+    size_t t_k_prev = 1;
+    auto main_work_end = main.begin();
+    while (t_k_prev <= small.size()){    // loop over groups
+        std::cout << "   t_k=" << t_k << "\n";
+        std::cout << "   t_k_prev=" << t_k_prev << "\n";
+        std::cout << "   k=" << k << "\n";
+        std::cout << "   2 ** k=" << (1 << k) << "\n";
+        main_work_end = t_k > small.size() ? 
+                main.begin() + (1 << k) - 1  // (1 << k)  == 2 ** k
+            :   main.end();
+        for (size_t i = t_k; i > t_k_prev; --i){  // loop inside the group
+            if (i > small.size())
+                continue;
+            binaryInsertion(main, main.begin(), main_work_end, small[rank[i - 1]]);
+        }
+        t_k_prev = t_k;
+        t_k = (1 << k) - t_k_prev;  // (1 << k)  == 2 ** k
+        ++k;
     }
-    vector_t indexes(len + 1);
-    for (size_t i = 0; i < len + 1; ++i){
-        indexes[i] = i;
-    }
-    size_t mid_point = len / 2;
-    for (size_t i = 0; i < mid_point; ++i){
-        if (!less(v[i], v[i + mid_point]))
-            continue;
-        std::swap(v[i], v[i + mid_point]);
-        std::swap(indexes[i], indexes[i + mid_point]);
-    }
-    vector_t small(v.begin() + mid_point, v.end());
-    v.erase(v.begin() + mid_point, v.end());
-    std::cout << "small: ";
-    printVector(small);
-    (void)small;
-    printVector(v);
-    vector_t rank = sortVector(v);
-    printVector(v);
-    vector_t indexes_ranked(indexes.size());
-    vector_t small_ranked(small.size());
-    indexes_ranked.back() = indexes.back();
-    for (size_t i = 0; i < mid_point; ++i){
-        small_ranked[i] = small[rank[i]];
-        indexes_ranked[i] = indexes[rank[i]];
-        indexes_ranked[i + mid_point] = indexes[rank[i] + mid_point];
-    }
-    insert(v, small_ranked, indexes_ranked);
-    //binaryInsertionVector(v, indexes, mid_point);
-    printVector(v);
-    return indexes;
-}
-*/
-
-/*
-void PmergeMe::insert(vector_t& v, vector_t& small, vector_t& indexes, vector_t& rank){
-    v.insert(v.begin(), small[rank[0]]);
-    (void)indexes;
-}
-*/
-
-/*
-size_t PmergeMe::insertPosition(vector_t& v, size_t begin, size_t end, unsigned int value){
-    if (begin == end)
-        return begin;
-    size_t mid_point = begin + (end - begin) / 2;
-    if (value < v[mid_point])
-*/
-/*
-    unsigned int b_0 = v[mid_point
-    v.erase(v.begin() + mid_point);
-    v.insert(v.begin(), b_0);
-    b_0 = indexes[mid_point];
-    indexes.erase(indexes.begin() + mid_point);
-    indexes.insert(indexes.begin(), b_0);
-*/
-
-
-void PmergeMe::binaryInsertionVector(vector_t& v, vector_t& indexes, size_t mid_point){
-    unsigned int b_0 = v[mid_point];
-    v.erase(v.begin() + mid_point);
-    v.insert(v.begin(), b_0);
-    b_0 = indexes[mid_point];
-    indexes.erase(indexes.begin() + mid_point);
-    //indexes.insert(indexes.begin(), b_0);
 }
 
 
+void PmergeMe::binaryInsertion(matrix_t& m, matrix_it first, matrix_it last, vector_t& value){
+    // std::cout << "first=\n";
+    // printVector(*first);
+    // std::cout << "  last-1=\n";
+    // printVector(*(last - 1));
+    if (last <= first)
+        return ;
+    if (last - first == 1){
+        if (value[0] > (*first)[0]){
+            m.insert(last, value);
+            return ;
+        }
+        m.insert(first, value);
+        return;
+    }
+    matrix_it mid = first + (last - first) / 2;
+    if (!less(value[0], (*mid)[0])){
+        binaryInsertion(m, mid + 1, last, value);
+        return ;
+    }
+    if (value[0] < (*mid)[0]){
+        binaryInsertion(m, first, mid, value);
+        return ;
+    }
+    m.insert(mid, value);
+}
 
 bool PmergeMe::less(unsigned int a, unsigned int b){
     number_compare++;
@@ -192,3 +169,64 @@ void PmergeMe::printVectorTuple(vector_pair& v, size_t len){
     }
     std::cout << '\n';
 }
+
+/*
+vector_t PmergeMe::sortVector(vector_t& v){
+    size_t len = v.size();
+    if (2 > len){
+        vector_t indexes{0, 1};
+        return indexes;
+    }
+    vector_t indexes(len + 1);
+    for (size_t i = 0; i < len + 1; ++i){
+        indexes[i] = i;
+    }
+    size_t mid_point = len / 2;
+    for (size_t i = 0; i < mid_point; ++i){
+        if (!less(v[i], v[i + mid_point]))
+            continue;
+        std::swap(v[i], v[i + mid_point]);
+        std::swap(indexes[i], indexes[i + mid_point]);
+    }
+    vector_t small(v.begin() + mid_point, v.end());
+    v.erase(v.begin() + mid_point, v.end());
+    std::cout << "small: ";
+    printVector(small);
+    (void)small;
+    printVector(v);
+    vector_t rank = sortVector(v);
+    printVector(v);
+    vector_t indexes_ranked(indexes.size());
+    vector_t small_ranked(small.size());
+    indexes_ranked.back() = indexes.back();
+    for (size_t i = 0; i < mid_point; ++i){
+        small_ranked[i] = small[rank[i]];
+        indexes_ranked[i] = indexes[rank[i]];
+        indexes_ranked[i + mid_point] = indexes[rank[i] + mid_point];
+    }
+    insert(v, small_ranked, indexes_ranked);
+    //binaryInsertionVector(v, indexes, mid_point);
+    printVector(v);
+    return indexes;
+}
+*/
+
+
+
+/*
+size_t PmergeMe::insertPosition(vector_t& v, size_t begin, size_t end, unsigned int value){
+    if (begin == end)
+        return begin;
+    size_t mid_point = begin + (end - begin) / 2;
+    if (value < v[mid_point])
+*/
+/*
+    unsigned int b_0 = v[mid_point
+    v.erase(v.begin() + mid_point);
+    v.insert(v.begin(), b_0);
+    b_0 = indexes[mid_point];
+    indexes.erase(indexes.begin() + mid_point);
+    indexes.insert(indexes.begin(), b_0);
+*/
+
+

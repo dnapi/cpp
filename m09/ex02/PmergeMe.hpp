@@ -6,8 +6,10 @@
 
 using vector_t = std::vector<unsigned int>;
 using vector_pair = std::vector<std::pair<unsigned int, unsigned int>>;
-using matrix_t = std::vector<std::vector<unsigned int>>;
 using vector_it = std::vector<unsigned int>::iterator;
+
+using matrix_t = std::vector<std::vector<unsigned int>>;
+using matrix_it = std::vector<std::vector<unsigned int>>::iterator;
 
 class PmergeMe{
 public:
@@ -25,13 +27,13 @@ public:
     void makeTwoVectors(vector_t& vec);
     void makeMainChainVector();
     ~PmergeMe() = default;
+    void printMatrix(matrix_t& v, size_t len = 20);
+    void printVector(vector_t& v, size_t len = 20);
+    void printVectorTuple(vector_pair& v, size_t len = 20);
+    void binaryInsertion(matrix_t& m, matrix_it first, matrix_it last, vector_t& value);
 private:
     bool less(unsigned int a, unsigned int b);
-    void printMatrix(matrix_t& v, size_t len = 10);
-    void printVector(vector_t& v, size_t len = 10);
-    void printVectorTuple(vector_pair& v, size_t len = 10);
-    void insert(vector_pair& v, vector_pair& small, vector_t& indexes);
-    void binaryInsertionVector(vector_t& v, vector_t& indexes, size_t mid_point);
+    void insert(matrix_t& main, matrix_t& small, vector_t& rank);
     PmergeMe(const PmergeMe&) = default;
     PmergeMe& operator=(const PmergeMe&) = default;
 };
