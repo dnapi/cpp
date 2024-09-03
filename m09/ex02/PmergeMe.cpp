@@ -45,7 +45,7 @@ vector_t PmergeMe::sort(matrix_t& m){
     }
     matrix_t small(m.begin() + mid_point, m.end());
     m.erase(m.begin() + mid_point, m.end());
-    if (0){
+    if (1){
         std::cout << "small: \n";
         printMatrix(small);
         std::cout << "main: \n";
@@ -55,17 +55,22 @@ vector_t PmergeMe::sort(matrix_t& m){
     std::cout << "-------  Iteration " << current_iteration << " after sort------\n";
     printMatrix(m);
     std::cout << "-------  Iteration " << current_iteration << " after print------\n";
+    printMatrix(small);
+    printVector(rank_next);
     insert(m, small, rank_next);
     std::cout << "-------  Iteration " << current_iteration << " after insert------\n";
-    // matrix_t small_ranked(small.size());
-    // for (size_t i = 0; i < mid_point; ++i){
-    //     small_ranked[i] = small[rank_next[i]];
-    // }
+    std::cout << "m.size()=" << m.size() << "\n";
+    printMatrix(m);
+    std::cout << "-------  Iteration " << current_iteration << " after print 2------\n";
     vector_t rank(m.size() + 1);
     rank.back() = len;
+    std::cout << "len=" << len << " m.size()=" << m.size() << "\n";
     for (size_t i = 0; i < m.size(); ++i){
+        std::cout << "i=" << i << "\n";
         rank[i] = m[i].back();
+        std::cout << "i=" << i << "\n";
         m[i].pop_back();
+        std::cout << "i=" << i << "\n";
     }
     std::cout << "-------  Iteration " << current_iteration << " before return------\n";
     return rank;
@@ -91,8 +96,8 @@ void PmergeMe::insert(matrix_t& main, matrix_t& small, vector_t& rank){
             binaryInsertion(main, main.begin(), main_work_end, small[rank[i - 1]]);
         }
         t_k_prev = t_k;
-        t_k = (1 << k) - t_k_prev;  // (1 << k)  == 2 ** k
         ++k;
+        t_k = (1 << k) - t_k_prev;  // (1 << k)  == 2 ** k
     }
 }
 
@@ -139,14 +144,15 @@ void PmergeMe::printVector(vector_t& v, size_t len){
 }
 
 void PmergeMe::printMatrix(matrix_t& v, size_t len){
-    for (size_t j = 0; j < v[0].size(); ++j){
-        for (size_t i = 0; i < v.size(); ++i){
+    for (size_t i = 0; i < v.size(); ++i){
+        std::cout << "i=" << i << ":";
+        for (size_t j = 0; j < v[i].size(); ++j){
            std::cout << v[i][j] << ' ';
-           if (i >= len)
+           if (j >= len)
               break;
         }
         std::cout << '\n';
-        if (j >= len)
+        if (i >= len)
             break;
     }
     std::cout << '\n';
