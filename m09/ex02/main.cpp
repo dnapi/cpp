@@ -6,7 +6,7 @@
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 09:05:24 by apimikov          #+#    #+#             */
-/*   Updated: 2024/09/03 12:11:47 by apimikov         ###   ########.fr       */
+/*   Updated: 2024/09/04 05:59:35 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,21 +47,21 @@ int main(int argc, char** argv){
     
     if (0){
         std::cout << "\n\n ----- Binary insert test ---- \n";
-        matrix_t mmm(8);
+        matrix_t mmm(2);
         vector_t vvv = {1};
         for (size_t i = 0; i < mmm.size(); ++i){
-            vvv[0] = 2 * i;
+            vvv[0] = i + 1;
             mmm[i] = vvv;
         }
         srt.printMatrix(mmm);
         vector_t value = {14};
-        srt.binaryInsertion(mmm, mmm.begin(), mmm.end(), value);
-        value = {0};
-        srt.binaryInsertion(mmm, mmm.begin(), mmm.end(), value);
+        //srt.binaryInsertion(mmm, mmm.begin(), mmm.end(), value);
+        //value = {0};
+        //srt.binaryInsertion(mmm, mmm.begin(), mmm.end(), value);
         value = {3};
         srt.binaryInsertion(mmm, mmm.begin(), mmm.end(), value);
-        value = {11};
-        srt.binaryInsertion(mmm, mmm.begin(), mmm.end(), value);
+        //value = {11};
+        //srt.binaryInsertion(mmm, mmm.begin(), mmm.end(), value);
         srt.printMatrix(mmm);
     }
 

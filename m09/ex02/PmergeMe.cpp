@@ -25,8 +25,8 @@ void PmergeMe::makeMainChainVector(){
 }
 
 vector_t PmergeMe::sort(matrix_t& m){
-    size_t current_iteration = number_iterations;
-    std::cout << "-------  Iteration " << current_iteration << "------\n";
+    //size_t current_iteration = number_iterations;
+    //std::cout << "-------  Iteration " << current_iteration << "------\n";
     number_iterations++;
     size_t len = m.size();
     if (2 > len){
@@ -45,60 +45,47 @@ vector_t PmergeMe::sort(matrix_t& m){
     }
     matrix_t small(m.begin() + mid_point, m.end());
     m.erase(m.begin() + mid_point, m.end());
-    if (1){
-        std::cout << "small: \n";
-        printMatrix(small);
-        std::cout << "main: \n";
-        printMatrix(m);
-    }
     vector_t rank_next = sort(m);
-    std::cout << "-------  Iteration " << current_iteration << " after sort------\n";
-    printMatrix(m);
-    std::cout << "-------  Iteration " << current_iteration << " after print------\n";
-    printMatrix(small);
-    printVector(rank_next);
     insert(m, small, rank_next);
-    std::cout << "-------  Iteration " << current_iteration << " after insert------\n";
-    std::cout << "m.size()=" << m.size() << "\n";
-    printMatrix(m);
-    std::cout << "-------  Iteration " << current_iteration << " after print 2------\n";
     vector_t rank(m.size() + 1);
     rank.back() = len;
-    std::cout << "len=" << len << " m.size()=" << m.size() << "\n";
     for (size_t i = 0; i < m.size(); ++i){
-        std::cout << "i=" << i << "\n";
         rank[i] = m[i].back();
-        std::cout << "i=" << i << "\n";
         m[i].pop_back();
-        std::cout << "i=" << i << "\n";
     }
-    std::cout << "-------  Iteration " << current_iteration << " before return------\n";
     return rank;
 }
 
 void PmergeMe::insert(matrix_t& main, matrix_t& small, vector_t& rank){
+    size_t extra_elem = small.size() - main.size();
     main.insert(main.begin(), small[rank[0]]);
     size_t k = 2;
     size_t t_k = 3;
     size_t t_k_prev = 1;
     auto main_work_end = main.begin();
-    while (t_k_prev <= small.size()){    // loop over groups
-        std::cout << "   t_k=" << t_k << "\n";
-        std::cout << "   t_k_prev=" << t_k_prev << "\n";
-        std::cout << "   k=" << k << "\n";
-        std::cout << "   2 ** k=" << (1 << k) << "\n";
-        main_work_end = t_k > small.size() ? 
+    while (t_k_prev <= small.size() - extra_elem){    // loop over groups
+        // std::cout << "   t_k=" << t_k << "\n";
+        // std::cout << "   t_k_prev=" << t_k_prev << "\n";
+        // std::cout << "   k=" << k << "\n";
+        // std::cout << "   2 ** k=" << (1 << k) << "\n";
+        // std::cout << "extra_element" << extra_elem << "\n";
+        main_work_end = t_k > small.size() - extra_elem? 
                 main.begin() + (1 << k) - 1  // (1 << k)  == 2 ** k
             :   main.end();
-        for (size_t i = t_k; i > t_k_prev; --i){  // loop inside the group
-            if (i > small.size())
-                continue;
+        // for (size_t i = t_k; i > t_k_prev; --i){  // loop inside the group
+        //     if (i > small.size() - extra_elem)
+        //         continue;
+        size_t i = small.size() - extra_elem;
+        i = i > t_k ? t_k : i;
+        for (; i > t_k_prev; --i){  // loop inside the group
             binaryInsertion(main, main.begin(), main_work_end, small[rank[i - 1]]);
         }
         t_k_prev = t_k;
         ++k;
         t_k = (1 << k) - t_k_prev;  // (1 << k)  == 2 ** k
     }
+    if (extra_elem)
+        binaryInsertion(main, main.begin(), main.end(), small.back());
 }
 
 
@@ -119,7 +106,10 @@ void PmergeMe::binaryInsertion(matrix_t& m, matrix_it first, matrix_it last, vec
     }
     matrix_it mid = first + (last - first) / 2;
     if (!less(value[0], (*mid)[0])){
-        binaryInsertion(m, mid + 1, last, value);
+        if (1 == last - mid)
+            m.insert(last, value);
+        else
+            binaryInsertion(m, mid + 1, last, value);
         return ;
     }
     if (value[0] < (*mid)[0]){
