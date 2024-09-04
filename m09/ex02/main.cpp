@@ -6,7 +6,7 @@
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 09:05:24 by apimikov          #+#    #+#             */
-/*   Updated: 2024/09/04 06:43:52 by apimikov         ###   ########.fr       */
+/*   Updated: 2024/09/04 12:24:49 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,27 @@ int main(int argc, char** argv){
     }
     std::cout << '\n';
 
+    vector_t test = {22, 24, 28, 30, 37, 42, 43, 46, 48, 50, 51, 52, 53, 54, 55, 56, 57, 61, 63, 66, 70, 71, 73, 74, 75, 76, 77, 78, 80, 81, 82, 83, 84, 88, 89, 90, 91, 93, 96, 97, 98, 99, 100};
+    if (0){
+        std::cout << "\n\n ----- Binary insert test ---- \n";
+        matrix_t mmm(test.size());
+        vector_t vvv = {1};
+        for (size_t i = 0; i < mmm.size(); ++i){
+            vvv[0] = test[i];
+            mmm[i] = vvv;
+        }
+        srt.printMatrix(mmm);
+        vector_t value = {95};
+        srt.binaryInsertion(mmm, mmm.begin(), mmm.end(), value);
+        //srt.binaryInsertion(mmm, mmm.begin(), mmm.end(), value);
+        //value = {0};
+        //srt.binaryInsertion(mmm, mmm.begin(), mmm.end(), value);
+        //value = {3};
+        //srt.binaryInsertion(mmm, mmm.begin(), mmm.end(), value);
+        //value = {11};
+        //srt.binaryInsertion(mmm, mmm.begin(), mmm.end(), value);
+        srt.printMatrix(mmm);
+    }
     return 0;
 }
 
@@ -67,23 +88,5 @@ int setData(std::vector<unsigned int>& vec, int argc, char** argv){
 
 
 /*
-if (0){
-        std::cout << "\n\n ----- Binary insert test ---- \n";
-        matrix_t mmm(2);
-        vector_t vvv = {1};
-        for (size_t i = 0; i < mmm.size(); ++i){
-            vvv[0] = i + 1;
-            mmm[i] = vvv;
-        }
-        srt.printMatrix(mmm);
-        vector_t value = {14};
-        //srt.binaryInsertion(mmm, mmm.begin(), mmm.end(), value);
-        //value = {0};
-        //srt.binaryInsertion(mmm, mmm.begin(), mmm.end(), value);
-        value = {3};
-        srt.binaryInsertion(mmm, mmm.begin(), mmm.end(), value);
-        //value = {11};
-        //srt.binaryInsertion(mmm, mmm.begin(), mmm.end(), value);
-        srt.printMatrix(mmm);
-    }
+
 */
