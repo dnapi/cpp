@@ -1,8 +1,26 @@
 #include "PmergeMe.hpp"
 
-//PmergeMe::PmergeMe(): {}
+void PmergeMe::sortDeque(deque_t& deq){
+    deque2d_t m(deq.size());
+    for (size_t i = 0; i < deq.size();++i){
+        m[i].push_back(deq[i]);
+    }
+    sortDeque2D(m);
+    for (size_t i = 0; i < deq.size();++i)
+        deq[i] = m[i][0];
+}
 
-vector_t PmergeMe::sort(matrix_t& m){
+void PmergeMe::sortVector(vector_t& vec){
+    matrix_t m(vec.size());
+    for (size_t i = 0; i < vec.size();++i){
+        m[i].push_back(vec[i]);
+    }
+    sortMatrix(m);
+    for (size_t i = 0; i < vec.size();++i)
+        vec[i] = m[i][0];
+}
+
+vector_t PmergeMe::sortMatrix(matrix_t& m){
     //size_t current_iteration = ++number_iterations;
     //std::cout << "------------  Iteration " << current_iteration << "\n";
     size_t len = m.size();
@@ -27,7 +45,7 @@ vector_t PmergeMe::sort(matrix_t& m){
     // std::cout << "small.size()=" << small.size() << "\n";
     // std::cout << "small = \n";
     // printMatrix(small);
-    vector_t rank_next = sort(m);
+    vector_t rank_next = sortMatrix(m);
     // std::cout << "------------  Iteration " << current_iteration << "sorted\n";
     insert(m, small, rank_next);
     // std::cout << "m.size()=" << m.size() << "\n";
@@ -119,15 +137,6 @@ bool PmergeMe::less(unsigned int a, unsigned int b){
     return a < b;
 }
 
-void PmergeMe::printVector(vector_t& v, size_t len){
-    for (auto& i : v){
-        std::cout << i << ' ';
-        if (--len == 0) 
-            break;
-    }
-    std::cout << '\n';
-}
-
 void PmergeMe::printMatrix(matrix_t& v, size_t len){
     for (size_t i = 0; i < v.size(); ++i){
         std::cout << "i=" << i << ":";
@@ -142,3 +151,141 @@ void PmergeMe::printMatrix(matrix_t& v, size_t len){
     }
     std::cout << '\n';
 }
+
+void PmergeMe::printVector(vector_t& v, size_t len){
+    for (auto& i : v){
+        std::cout << i << ' ';
+        if (--len == 0) 
+            break;
+    }
+    std::cout << '\n';
+}
+
+void PmergeMe::printDeque(deque_t& v, size_t len){
+    for (auto& i : v){
+        std::cout << i << ' ';
+        if (--len == 0) 
+            break;
+    }
+    std::cout << '\n';
+}
+
+
+/*
+the following is duplication of the code, as 
+templates was not allowed for this project
+*/
+
+deque_t PmergeMe::sortDeque2D(deque2d_t& m){
+    //size_t current_iteration = ++number_iterations;
+    //std::cout << "------------  Iteration " << current_iteration << "\n";
+    size_t len = m.size();
+    if (2 > len){
+        deque_t indexes{0, 1};
+      //  std::cout << "------------  Iteration " << current_iteration << "ended\n";
+        return indexes;
+    }
+    for (size_t i = 0; i < len; ++i){
+        m[i].push_back(i);
+    }
+    size_t mid_point = len / 2;
+    for (size_t i = 0; i < mid_point; ++i){
+        if (less(m[i][0], m[i + mid_point][0]))
+            std::swap(m[i], m[i + mid_point]);
+    }
+    deque2d_t small(m.begin() + mid_point, m.end());
+    m.erase(m.begin() + mid_point, m.end());
+    // std::cout << "m.size()=" << m.size() << "\n";
+    // std::cout << "m = \n";
+    // printMatrix(m);
+    // std::cout << "small.size()=" << small.size() << "\n";
+    // std::cout << "small = \n";
+    // printMatrix(small);
+    deque_t rank_next = sortDeque2D(m);
+    // std::cout << "------------  Iteration " << current_iteration << "sorted\n";
+    insertDeque(m, small, rank_next);
+    // std::cout << "m.size()=" << m.size() << "\n";
+    // std::cout << "m = \n";
+    // printMatrix(m);
+    // std::cout << "small.size()=" << small.size() << "\n";
+    // std::cout << "small = \n";
+    // printMatrix(small);
+    // std::cout << "------------  Iteration " << current_iteration << "inserted\n";
+    deque_t rank(m.size() + 1);
+    for (size_t i = 0; i < m.size(); ++i){
+        //std::cout << "i=" << i << "\n";
+        rank[i] = m[i].back();
+        //std::cout << "size m[i]=" << m[i].size() << "\n";
+        m[i].pop_back();
+    }
+    //std::cout << "------------  Iteration " << current_iteration << "ended\n";
+    return rank;
+}
+
+void PmergeMe::insertDeque(deque2d_t& main, deque2d_t& small, deque_t& rank){
+    //std::cout << "insert started\n";
+    size_t extra_elem = small.size() - main.size();
+    main.insert(main.begin(), small[rank[0]]);
+    size_t k = 2;
+    size_t t_k = 3;
+    size_t t_k_prev = 1;
+    auto main_work_end = main.begin();
+    while (t_k_prev <= small.size() - extra_elem){    // loop over groups
+        // std::cout << "k=" << k 
+        //     << "t_k_prev=" << t_k_prev 
+        //     << "   t_k =" << t_k 
+        //     << "\n";
+        main_work_end = t_k < small.size() - extra_elem? 
+                main.begin() + (1 << k) - 1  // (1 << k)  == 2 ** k
+            :   main.end();
+        size_t i = small.size() - extra_elem;
+        i = i > t_k ? t_k : i;
+        for (; i > t_k_prev; --i){  // loop inside the group
+            // if (0){
+            //     std::cout << "i=" << i << "   small[rank[i - 1]]=" << small[rank[i - 1]][0] 
+            //         << "   t_k =" << t_k  << "\n";
+            //     std::cout << "before insert main.size()=" << main.size() << "\n";
+            //     std::cout << "size of main chain=" << main_work_end - main.begin() << "n";
+            //     }
+            binaryInsertionDeque(main, main.begin(), main_work_end, small[rank[i - 1]]);
+            // if (0){//i == 22
+            //     std::cout << "after main.size()=" << main.size() << " main=\n";
+            //     printMatrix(main);
+            // }
+        }
+        t_k_prev = t_k;
+        ++k;
+        t_k = (1 << k) - t_k_prev;  // (1 << k)  == 2 ** k
+    }
+    if (extra_elem)
+        binaryInsertionDeque(main, main.begin(), main.end(), small.back());
+}
+
+
+void PmergeMe::binaryInsertionDeque(deque2d_t& m, deque2d_it first, deque2d_it last, deque_t& value){
+    if (last <= first)
+        return ;
+    if (last - first == 1){
+        if (value[0] > (*first)[0]){
+            m.insert(last, value);
+            return ;
+        }
+        m.insert(first, value);
+        return;
+    }
+    auto mid = first + (last - first) / 2;
+    if (!less(value[0], (*mid)[0])){
+        if (1 == last - mid)
+            m.insert(last, value);
+        else
+            binaryInsertionDeque(m, mid + 1, last, value);
+        return ;
+    }
+    if (value[0] < (*mid)[0]){
+        binaryInsertionDeque(m, first, mid, value);
+        return ;
+    }
+    m.insert(mid, value);
+}
+
+
