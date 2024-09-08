@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/08 15:27:47 by apimikov          #+#    #+#             */
+/*   Updated: 2024/09/08 15:34:25 by apimikov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "BitcoinExchange.hpp"
 
 int BitcoinExchange::makeData(const std::string& filename){
     std::ifstream file(filename);
     if (!file.is_open()) {
-        std::cerr << "Error: Could not open the file!" << std::endl;
+        std::cerr << "Error: Could not open the file " << filename << std::endl;
         return 1;
     }
     std::string line;
@@ -21,11 +33,6 @@ int BitcoinExchange::addDataEntry(std::string line){
     std::smatch matches;
     if (!std::regex_match(line, matches, pattern))
         return 1;
-    // std::cout << "Matched!" << std::endl;
-    // std::cout << "Year: " << matches[1].str() << std::endl;
-    // std::cout << "Month: " << matches[2].str() << std::endl;
-    // std::cout << "Day: " << matches[3].str() << std::endl;
-    // std::cout << "Value: " << matches[4].str() << std::endl;
     std::string date = line.substr(0 ,10);
     double value = 0;
     try {
@@ -44,7 +51,6 @@ int BitcoinExchange::addDataEntry(std::string line){
 }
 
 double BitcoinExchange::getRate(std::string date){
-    //std::cout << "getRate for " << date << "\n";
     auto it = data.upper_bound(date);
     if (it == data.begin()){
         std::cout << "Error: oldest date is " << data.begin()->first << "\n";
@@ -57,13 +63,12 @@ double BitcoinExchange::getRate(std::string date){
 int BitcoinExchange::readInput(const std::string& filename){
     std::ifstream file(filename);
     if (!file.is_open()) {
-        std::cerr << "Error: Could not open the file!" << std::endl;
+        std::cerr << "Error: Could not open the file " << filename << std::endl;
         return 1;
     }
     std::string line;
     std::getline(file, line);
     while (std::getline(file, line)) {
-    //    std::cout << "line=" << line << "\n";
         calcPrice(line);
     }
     file.close();
@@ -78,11 +83,6 @@ int BitcoinExchange::calcPrice(std::string line){
         std::cout << "Error: bad input => " << line << "\n";
         return 1;
     }
-    /*
-    std::cout << "Matched!" << std::endl;
-    std::cout << "Date: " << matches[1].str() << std::endl;
-    std::cout << "Value: " << matches[2].str() << std::endl;
-    */
     std::string date = line.substr(0 ,10);
     double value = 0;
     try {

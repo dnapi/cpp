@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PmergeMe.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/08 15:40:55 by apimikov          #+#    #+#             */
+/*   Updated: 2024/09/08 15:42:01 by apimikov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #pragma once
 
 #include <iostream>
@@ -13,7 +25,6 @@ using deque2d_it = std::deque<std::deque<unsigned int>>::iterator;
 
 class PmergeMe{
 public:
-    bool red_flag = 0;
     size_t number_compare = 0;
     size_t number_iterations = 0;
     void sortVector(vector_t& vec);
