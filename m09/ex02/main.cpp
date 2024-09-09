@@ -14,10 +14,13 @@
 #include <vector>
 #include <string>
 #include <chrono>
+#include <cmath>
 #include "PmergeMe.hpp"
 
 int setData(std::vector<unsigned int>& vec, int argc, char** argv);
 int setData(deque_t& deq, int argc, char** argv);
+bool isSorted(const vector_t& vec);
+bool isSorted(const deque_t& vec);
 
 int main(int argc, char** argv){
     if (1 == argc){
@@ -41,6 +44,8 @@ int main(int argc, char** argv){
         std::chrono::duration<double> elapsed_seconds = end - start;
         std::cout << "Time to process a range of " << argc - 1
             <<" elements with std::vector : " << elapsed_seconds.count() * 1000000 << "us\n";
+        if (!isSorted(vec))
+            std::cout << "NOT SORTED\n";
     }
     
     {
@@ -56,7 +61,17 @@ int main(int argc, char** argv){
         std::chrono::duration<double> elapsed_seconds = end - start;
         std::cout << "Time to process a range of " << argc - 1
             <<" elements with std::deque : " << elapsed_seconds.count() * 1000000 << "us\n";
+        std::cout << "Number  of comparisons = " << srt.number_compare << " \n";
+        if (!isSorted(deq))
+            std::cout << "NOT SORTED\n";
     }
+
+    double sum = 0.0;
+    for (int k = 2; k <= argc; ++k) {
+        sum += std::ceil(std::log2(3 * k / 4));
+    }
+    std::cout << "Estimated number of comparisons is: " << sum << std::endl;
+
     return 0;
 }
 
@@ -96,6 +111,24 @@ int setData(deque_t& deq, int argc, char** argv){
         deq.push_back(value);
     }
 	return 0;
+}
+
+bool isSorted(const vector_t& vec){
+    for (size_t i = 1; i < vec.size(); ++i) {
+        if (vec[i] < vec[i - 1]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool isSorted(const deque_t& vec){
+    for (size_t i = 1; i < vec.size(); ++i) {
+        if (vec[i] < vec[i - 1]) {
+            return false;
+        }
+    }
+    return true;
 }
 
 /*

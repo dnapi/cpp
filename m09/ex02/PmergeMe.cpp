@@ -17,16 +17,8 @@ void PmergeMe::sortDeque(deque_t& deq){
     for (size_t i = 0; i < deq.size();++i){
         m[i].push_back(deq[i]);
     }
-    std::cout << "before sortDeque2D\n";
     sortDeque2D(m);
-    std::cout << "after sortDeque2D\n";
     for (size_t i = 0; i < m.size();++i){
-        std::cout << "i=" << i << ":";
-        printDeque(m[i]);
-        //deq[i] = m[i][0];
-    }
-    std::cout << "\n";
-    for (size_t i = 0; i < deq.size();++i){
         deq[i] = m[i][0];
     }
 }
@@ -75,12 +67,12 @@ void PmergeMe::insert(matrix_t& main, matrix_t& small, vector_t& rank){
     size_t t_k_prev = 1;
     auto main_work_end = main.begin();
     while (t_k_prev <= small.size() - extra_elem){    // loop over groups
-        main_work_end = t_k < small.size() - extra_elem? 
-                main.begin() + (1 << k) - 1  // (1 << k)  == 2 ** k
-            :   main.end();
         size_t i = small.size() - extra_elem;
         i = i > t_k ? t_k : i;
         for (; i > t_k_prev; --i){  // loop inside the group
+            main_work_end = t_k < small.size() - extra_elem
+                ? main.begin() + (1 << k) - 1  // (1 << k)  == 2 ** k
+                : main.end();
             binaryInsertion(main, main.begin(), main_work_end, small[rank[i - 1]]);
         }
         t_k_prev = t_k;
@@ -164,7 +156,7 @@ templates was not allowed for this project
 
 deque_t PmergeMe::sortDeque2D(deque2d_t& m){
     number_iterations++;
-    size_t current_iteration = number_iterations;
+    //size_t current_iteration = number_iterations;
     size_t len = m.size();
     if (2 > len){
         deque_t indexes{0, 1};
@@ -178,7 +170,7 @@ deque_t PmergeMe::sortDeque2D(deque2d_t& m){
         if (less(m[i][0], m[i + mid_point][0]))
             std::swap(m[i], m[i + mid_point]);
     }
-    std::cout << "Iter i=" << current_iteration << "size m=" << m.size() << "\n";
+    //std::cout << "Iter i=" << current_iteration << "size m=" << m.size() << "\n";
     deque2d_t small(m.begin() + mid_point, m.end());
     m.erase(m.begin() + mid_point, m.end());
     // std::cout << "Before sortDeque Iter i=" << current_iteration 
@@ -188,7 +180,7 @@ deque_t PmergeMe::sortDeque2D(deque2d_t& m){
     deque_t rank_next = sortDeque2D(m);
     // std::cout << "After insert Iter i=" << current_iteration << "size m=" << m.size() << "\n";
     insertDeque(m, small, rank_next);
-    std::cout << "After insert Iter i=" << current_iteration << "size m=" << m.size() << "\n";
+    //std::cout << "After insert Iter i=" << current_iteration << "size m=" << m.size() << "\n";
     deque_t rank(m.size() + 1);
     for (size_t i = 0; i < m.size(); ++i){
         rank[i] = m[i].back();
@@ -198,23 +190,26 @@ deque_t PmergeMe::sortDeque2D(deque2d_t& m){
 }
 
 void PmergeMe::insertDeque(deque2d_t& main, deque2d_t& small, deque_t& rank){
-    size_t test_size_main = main.size();
-    size_t test_size_small = small.size();
-    deque2d_t main_before = main;
+    // size_t test_size_main = main.size();
+    // size_t test_size_small = small.size();
+    // deque2d_t main_before = main;
 
     size_t extra_elem = small.size() - main.size();
     main.insert(main.begin(), small[rank[0]]);
+    // if (test_size_main == main.size())
+    //     std::cout << "b_1 insertion:main.size=" << main.size() 
+    //         << "size before insertion = " << test_size_main <<"\n";
     size_t k = 2;
     size_t t_k = 3;
     size_t t_k_prev = 1;
     auto main_work_end = main.begin();
     while (t_k_prev <= small.size() - extra_elem){    // loop over groups
-        main_work_end = t_k < small.size() - extra_elem? 
-                main.begin() + (1 << k) - 1  // (1 << k)  == 2 ** k
-            :   main.end();
         size_t i = small.size() - extra_elem;
         i = i > t_k ? t_k : i;
         for (; i > t_k_prev; --i){  // loop inside the group
+            main_work_end = t_k < small.size() - extra_elem
+                ? main.begin() + (1 << k) - 1  // (1 << k)  == 2 ** k
+                : main.end();
             binaryInsertionDeque(main, main.begin(), main_work_end, small[rank[i - 1]]);
         }
         t_k_prev = t_k;
@@ -224,24 +219,27 @@ void PmergeMe::insertDeque(deque2d_t& main, deque2d_t& small, deque_t& rank){
     if (extra_elem)
         binaryInsertionDeque(main, main.begin(), main.end(), small.back());
     
-    if (main.size() != test_size_main + test_size_small)
-    {
-        std::cout << "losted elements:" << test_size_main << "+" << test_size_small << "!=" << main.size() << "\n";
-        std::cout << "main before:\n";
-        for (auto i : main_before){
-            printDeque(i);
-        }
-        std::cout << "small:\n";
-        for (auto i : small){
-            printDeque(i);
-        }
-        std::cout << "main after:\n";
-        for (auto i : main){
-            printDeque(i);
-        }
-        //std::cout << "main:\n";
-        //printDeque(main);
-    }
+    // if (main.size() != test_size_main + test_size_small)
+    // {
+    //     std::cout << "losted elements:" << test_size_main << "+" << test_size_small << "!=" << main.size() << "\n";
+    //     std::cout << "main before:\n";
+    //     for (auto i : main_before){
+    //         printDeque(i);
+    //     }
+    //     std::cout << "small:\n";
+    //     for (auto i : small){
+    //         printDeque(i);
+    //     }
+    //     std::cout << "rank:\n";
+    //     printDeque(rank);
+
+    //     std::cout << "main after:\n";
+    //     for (auto i : main){
+    //         printDeque(i);
+    //     }
+    //     //std::cout << "main:\n";
+    //     //printDeque(main);
+    // }
 }
 
 
