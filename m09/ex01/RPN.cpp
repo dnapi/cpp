@@ -13,6 +13,11 @@
 #include "RPN.hpp"
 
 float RPN::calcExpr(const std::string& expr){
+    expr_ = expr;
+    if (expr.empty()){
+        std::cerr << "Error: empty input\n";
+        return 0;
+    }
     for (auto & c: expr){
         pos_++;
         if (isspace(c)) continue;
@@ -42,11 +47,18 @@ float RPN::calcExpr(const std::string& expr){
         size++;
         stack_.pop();
     }
-    if (size == 1)
+    if (size == 1){
+        valid_ = 1;
         return result;
+    }
     std::cerr << "Error: the RPN expression is not complited. see position " << pos_ << ".\n";
-    valid_ = 1;
+    valid_ = 0;
     return 0;
+}
+
+void RPN::print_error(){
+    std::cerr << "    in input " << expr_ << ".\n";
+    std::cerr <<  std::string(12 + pos_, ' ') << "^" << ".\n";
 }
 
 void RPN::apply(int c){

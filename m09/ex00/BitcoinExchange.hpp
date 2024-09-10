@@ -31,4 +31,7 @@ private:
     BitcoinExchange(const BitcoinExchange&) = default;
     BitcoinExchange& operator=(const BitcoinExchange&) = default;
     std::map<std::string, double> data;
+    bool isLeapYear(int year);
+    bool isValidDate(int year, int month, int day);
+    bool validateDate(const std::string& date);
 };

@@ -25,5 +25,6 @@ int main(int argc, char** argv){
         std::cout << result <<"\n";
         return 0;
     }
+    rpn.print_error();
     return 1;
 }

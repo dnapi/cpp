@@ -18,7 +18,7 @@
 
 int main(int argc, char** argv){
     if (argc != 2){
-        std::cout << "Please provide one file name as an argument\n";
+        std::cerr << "Please provide one file name as an argument\n";
         return (1);
     }
     BitcoinExchange btc;
