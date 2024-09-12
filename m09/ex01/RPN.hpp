@@ -16,6 +16,7 @@ public:
 private:
     size_t pos_ = 0;
     int valid_ = 1;
+    int number_entries = 0;
     std::string expr_;
     std::stack<float> stack_;
     RPN(const RPN&) = default;

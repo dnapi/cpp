@@ -18,6 +18,10 @@ int main(int argc, char** argv){
         std::cerr << "Error: Please, provide one argument. \n";
     return (1);
     }
+    if (!*argv[1]){
+        std::cerr << "Error: empty input. \n";
+    return (1);
+    }
     (void)argv;
     RPN rpn;
     float result = rpn.calcExpr(argv[1]);

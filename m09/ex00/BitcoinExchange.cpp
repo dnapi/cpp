@@ -111,7 +111,7 @@ int BitcoinExchange::calcPrice(std::string line){
         return 1;
     }
     if (!validateDate(date)){
-        std::cerr << "Error: invalid date.\n";
+        std::cerr << "Error: invalid date: " << date <<".\n";
         return 1;
     }
     double rate = getRate(date);

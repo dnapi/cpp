@@ -16,6 +16,18 @@ float RPN::calcExpr(const std::string& expr){
     expr_ = expr;
     if (expr.empty()){
         std::cerr << "Error: empty input\n";
+        valid_ = 0;
+        return 0;
+    }
+    size_t i = 0;
+    for (auto & c: expr){
+        if (!isspace(c))
+            break;
+        ++i;
+    }
+    if (i == expr.size()){
+        std::cerr << "Error: empty input\n";
+        valid_ = 0;
         return 0;
     }
     for (auto & c: expr){
@@ -28,7 +40,7 @@ float RPN::calcExpr(const std::string& expr){
         if ('+' == c || '-' == c || '*' == c || '/' == c){
             apply(c);
         }
-        else{
+        else {
             std::cerr << "Error: the symbol '" << c << "' is not supported." << "see position " << pos_ << ".\n";
             valid_ = 0;
         }
@@ -39,7 +51,7 @@ float RPN::calcExpr(const std::string& expr){
     }
     size_t size = 0;
     if (stack_.empty()){
-        valid_ = 1;
+        valid_ = 0;
         return 0;
     }
     float result =  stack_.top();
@@ -57,8 +69,8 @@ float RPN::calcExpr(const std::string& expr){
 }
 
 void RPN::print_error(){
-    std::cerr << "    in input " << expr_ << ".\n";
-    std::cerr <<  std::string(12 + pos_, ' ') << "^" << ".\n";
+    std::cerr << "    in input \"" << expr_ << "\".\n";
+    std::cerr <<  std::string(13 + pos_, ' ') << "^" << ".\n";
 }
 
 void RPN::apply(int c){
